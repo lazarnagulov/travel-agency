@@ -1,0 +1,102 @@
+.agencies-list{
+    height: 60%;
+    width: 90%;
+    margin: auto;
+    padding:15px 9%;
+    padding-bottom: 100px;
+}
+
+.main-agency{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+}
+
+.main-agency img{
+    width: 100%;
+    height: auto;
+}
+
+.agencies-ul-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.showmore-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+.showmore-options{
+    display: none;
+    flex-direction: column;
+    margin: 1rem auto;
+}
+
+.showmore-btn{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    background-color: #333;
+    width: fit-content;
+    padding: 0.5rem;
+    margin: 1rem auto 1rem auto;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+
+.showmore-btn:hover{
+    letter-spacing: 1px;
+    transform: scale(1.03);
+}
+
+.grid-container{
+    display: none;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:10px;
+}
+
+.agency{
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+    min-height: fit-content;
+    background: #fff;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.agency img{
+    height: 80px;
+}
+
+.agency h3{
+    color:#444;
+    font-size: 22px;
+    padding:10px 0;
+}
+
+.agency p{
+    color:#777;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.agency .btn{
+    margin-top: 10px;
+    display: inline-block;
+    background:#333;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 8px 25px;
+}
+
+.agency .btn:hover{
+    letter-spacing: 1px;
+}
+
+.agency:hover{
+    box-shadow: 0 10px 15px rgba(0,0,0,.3);
+    transform: scale(1.03);
+}
