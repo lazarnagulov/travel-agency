@@ -12,22 +12,14 @@ body{
 }
 
 header{
-    height: 10%;
+    height: 5%;
 }
 
 main{
     height: fit-content;
-    min-height: 80%;
+    min-height: 85%;
     width: 100%;
-    background: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
-}
-
-.logo-img{
-    display: block;
-    margin:auto;
-    padding: 1rem;
-    height: auto;
-    width: 50%;
+    background: white; /*linear-gradient(to right, #2980b9, #6dd5fa, #ffffff); */
 }
 
 main h2{
