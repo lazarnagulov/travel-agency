@@ -30,34 +30,44 @@
               </nav>
         </header>
         <main>
-            <!-- <div class="popup-login bg-color" id="login-form">
+            <!-- username, password, name, surname, email, birthDate, address, phoneNumber -->
+            <div class="popup-login bg-color" id="login-form">
                 <form action="#">
+                    <h2>Login</h2> <br>
                     <label for="username">Username: </label> <br>
                     <input type="text" name="username" id=""> <br>
                     <label for="password">Password: </label> <br>
-                    <input type="text" name="password" id=""> <br> <br>
+                    <input type="passwrod" name="password" id=""> <br> <br>
                     <div class="login-btns">
                         <button><p>Login</p></button>
                     </div>
                 </form>
-            </div> -->
-            <!-- <img src="/img/logo-s.png" alt="logo" class="logo-img"> -->
+            </div>
+            <div class="popup-login bg-color" id="register-form">
+                <form action="#">
+                    <h2>Register</h2> <br>
+                    <label for="username">Username: </label> 
+                    <input type="text" name="username" id=""> <br> <br>
+                    <label for="password">Password: </label> 
+                    <input type="text" name="password" id=""> <br> <br>
+                    <label for="name">Name: </label> 
+                    <input type="text" name="name" id=""> <br> <br>
+                    <label for="surname">Surname: </label>
+                    <input type="text" name="surname" id=""> <br> <br>
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id=""> <br> <br>
+                    <label for="date">Birth date: </label>
+                    <input type="date" name="date" id=""> <br> <br>
+                    <label for="address">Address: </label>
+                    <input type="text" name="address" id=""> <br> <br>
+                    <label for="password">Phone number: </label>
+                    <input type="number" name="phonenumber" id=""> <br> <br>
+                    <div class="login-btns">
+                        <button><p>Register</p></button>
+                    </div>
+                </form>
+            </div>
             <div class="agencies-list">
-                <h2>Welcome!</h2>
-                <h3>
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla 
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla 
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla
-                    bla bla blabla bla blabla bla blabla bla blabla bla blabla bla bla 
-                </h3>
-                <div class="main-agency">
-                    <img src="/img/agency-logo1.jpg" alt="logo2.png">
-                </div>
                 <div class="grid-container">
                     <div class="agency">
                         <img src="img/agency-logo1.jpg" alt="">
@@ -150,16 +160,12 @@
                         <a href="#" class="btn">read more</a>
                     </div>
                 </div>
-                <div class="showmore-bar">
-                    <div class="showmore-btn" id="showmore-btn">
-                        <h4>Show more</h4>
-                    </div>
-                </div>
             </div>
         </main>
         <footer>
 
         </footer>
         <script src="./scripts/toggleButton.js"></script>
+        <script src="./scripts/popups.js"></script>
     </body>
 </html>
