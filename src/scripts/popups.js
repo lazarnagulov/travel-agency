@@ -1,7 +1,7 @@
 const popupLogin = document.getElementById("login-form");
 const loginButton = document.getElementById("login-btn");
-const popupRegister = document.getElementById("register-btn");
-const registerButton = document.getElementById("register-form");
+const popupRegister = document.getElementById("register-form");
+const registerButton = document.getElementById("register-btn");
 
 
 loginButton.addEventListener("click", () => {

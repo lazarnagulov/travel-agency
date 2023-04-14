@@ -12,4 +12,17 @@ export class User{
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
+
+    static registerUser(username, password, name, surname, email, birthDate, address, phoneNumber){
+
+    }
+
+    static updateUser(user){
+
+    }
+
+    static removeUser(user){
+        User.users.delete(user);
+    }
+
 }

@@ -18,14 +18,40 @@ export class TravelAgency
 
     createCard(container){
         container.innerHTML +=
-            `<div class="agency"> 
-                <img src="./img/${this.name + ".jpg"}" alt="${this.name + ".jpg"}">
-                <h3>${this.name}</h3>
-                <p>
-                    Address: ${this.address}
-                    Destinations: ${Destination.getDestinationsFromGroup(this.destinations)}
-                </p>
-                <a href="#" class="btn">Read more</a>
+            `
+                <div class="agency"> 
+                    <img src="./img/${this.name + ".jpg"}" alt="${this.name + ".jpg"}">
+                    <h3>${this.name}</h3>
+                    <a href="#agency-info" class="btn" id = ${this.id}>Read more</a>
+                </div>
             `
     }
+
+    createAgencyInfo(){
+        const info = document.getElementById("agency-info");
+        info.style.display = "flex";
+        info.className = "bg-color";
+        info.innerHTML = 
+        `
+            <h2>${this.name}</h2>
+            <img src="./img/${this.name}.jpg" alt = "${this.name}.jpg">
+            <div class = "info-text">
+                <h4>
+                    Adress: ${this.address} <br>
+                    Year: ${this.yearOfOpening} <br>
+                    Phone number: ${this.phoneNumber} <br>   
+                    Email: ${this.email} <br>
+                    Destinations: <br>
+                </h4>
+                <div class = "destinations">
+                    ${Destination.getDestinationsFromGroup(this.destinations)} <br>
+                    <a href = "#" id = "remove-info">Show less</a>
+                </div>
+            </div>
+        `
+        document.getElementById("remove-info").addEventListener('click', () => {
+            info.style.display = "none";
+        })
+    }
+
 }

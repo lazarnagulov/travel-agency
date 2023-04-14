@@ -21,7 +21,7 @@
 
 .agency{
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
-    border-radius: 5px;
+    border-radius: 10px;
     min-height: fit-content;
     background: #fff;
     text-align: center;
@@ -49,6 +49,7 @@
     display: inline-block;
     background:#333;
     color:#fff;
+    text-decoration: none;
     font-size: 17px;
     border-radius: 5px;
     padding: 8px 25px;
@@ -61,4 +62,45 @@
 .agency:hover{
     box-shadow: 0 10px 15px rgba(0,0,0,.3);
     transform: scale(1.03);
+}
+
+#agency-info{
+    display: none;
+    flex-direction: column;
+    padding: 2rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border-radius: 5px;
+}
+
+#agency-info img{
+    padding: 2rem;    
+}
+
+#agency-info h2{
+    font-size: 3rem;
+}
+
+.info-text{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background-color: white;
+    font-size: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.info-text a{
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: center;
+    color: white;
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.destinations{
+    padding: 1rem;
 }
