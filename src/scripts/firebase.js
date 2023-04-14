@@ -26,6 +26,11 @@ function createAgencies(agenciesData){
     for(let [_, agency] of TravelAgency.agencies){
         agency.createCard(agenciesContainer);
     }
+    for(let [id, agency] of TravelAgency.agencies){
+        document.getElementById(id).addEventListener('click', () => {
+            agency.createAgencyInfo();
+        })
+    }
 }
 
 function createDestinations(destinationsData){

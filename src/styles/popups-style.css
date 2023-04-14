@@ -1,26 +1,31 @@
 .popup-login{
     position: relative;
     display: none;
-    width: 50%;
-    margin: 2rem auto 2rem auto;
+    width: 250px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
     border-radius: 10px;
-    padding: 2rem;
+    background-color: white;
     z-index: 2;
     justify-content: center;
+    margin: auto;
+    margin-top: 2rem;
 }
 
-.login-btns{
+
+.popup-login form input[type="text"], .popup-login form input[type="password"]{
+    padding: 0.25rem;
+}
+
+.popup-login form{
+    padding-bottom: 1rem;
+}
+
+.popup-login form h2{
+    padding-top: 2rem;
+}
+
+.popup-login form input[type="submit"]{
     display: flex;
-    justify-content: center;
-}
-
-.login-btns p{
-    font-size: 1rem;
     padding: 0.5rem;
-}
-
-@media (min-width: 800px){
-    .popup-login{
-        width: 30%;
-    }
+    margin: auto;
 }

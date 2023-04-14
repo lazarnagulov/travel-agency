@@ -15,6 +15,26 @@ export class Destination
         this.maxTravelers = maxTravelers;
     }
 
+    createSlideShow(){
+        
+    }
+
+    createDestinationInfo(){
+        const info = document.getElementById("destination-info");
+        info.innerHTML = 
+            `
+                <h2>${this.name}</h2>
+                <div class = "slideshow-container">${createSlideShow()}</div>    
+                <h4>
+                    Description: ${this.description} <br>
+                    Type: ${this.type} <br>
+                    Transport: ${this.typeOfTransport} <br>
+                    Price: ${this.price} <br>
+                    Travelers: ${this.maxTravelers} <br>
+                </h4>
+            `
+    }
+
     static getDestinationsFromGroup(groupId){
         const group = this.destinationsGroup.get(groupId);
         let ret = "";
@@ -28,7 +48,7 @@ export class Destination
             if(!dest){
                 console.error(`Destination ${id} does not exist!`);
             }
-            ret += `${dest.name}, `;
+            ret += `<a id = ${id}>${dest.name}</a><br> `;
         }
         return ret.slice(0,-2);
     }
