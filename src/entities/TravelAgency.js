@@ -16,6 +16,10 @@ export class TravelAgency
         this.destinations = destinations;
     }
 
+    static generateTable(table){
+
+    }
+
     createCard(container){
         container.innerHTML +=
             `

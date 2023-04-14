@@ -1,0 +1,14 @@
+#users-table{
+    margin: auto;
+    table-layout: fixed;
+}
+
+#users-table, th, tr, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#users-table th, tr{
+    padding: 0.5rem;
+}
+  

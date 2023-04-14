@@ -5,6 +5,9 @@ import { User } from "../entities/User.js";
 const firebaseURL = "https://turistickaagencija-e6403-default-rtdb.europe-west1.firebasedatabase.app"; 
 
 const agenciesContainer = document.getElementById("agencies-container");
+const userTable = document.getElementById("users-table");
+
+
 
 function createAgencies(agenciesData){
     for(let id in agenciesData){
@@ -22,15 +25,17 @@ function createAgencies(agenciesData){
             )
         )
     }
-    
-    for(let [_, agency] of TravelAgency.agencies){
-        agency.createCard(agenciesContainer);
+    if(agenciesContainer){
+        for(let [_, agency] of TravelAgency.agencies){
+            agency.createCard(agenciesContainer);
+        }
+        for(let [id, agency] of TravelAgency.agencies){
+            document.getElementById(id).addEventListener('click', () => {
+                agency.createAgencyInfo();
+            })
+        }
     }
-    for(let [id, agency] of TravelAgency.agencies){
-        document.getElementById(id).addEventListener('click', () => {
-            agency.createAgencyInfo();
-        })
-    }
+
 }
 
 function createDestinations(destinationsData){
@@ -62,6 +67,7 @@ function createDestinations(destinationsData){
 function createUsers(usersData){
     for(let id in usersData){
         const user = usersData[id];
+        console.log(user.brojTelefona);
         User.users.set(id,
             new User(
                 id,
@@ -72,10 +78,15 @@ function createUsers(usersData){
                 user.email,
                 user.datumRodjenja,
                 user.adresa,
-                user.brojTelefona
+                user.telefon
             )
         )
     }
+
+    if(userTable){
+        User.generateTable(userTable);
+    }
+    
 }
 
 async function fetchData(){

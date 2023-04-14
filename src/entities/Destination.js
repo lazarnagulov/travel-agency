@@ -15,6 +15,10 @@ export class Destination
         this.maxTravelers = maxTravelers;
     }
 
+    static generateTable(){
+        
+    }
+
     createSlideShow(){
         
     }
