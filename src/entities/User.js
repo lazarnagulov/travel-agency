@@ -1,5 +1,8 @@
-class User{
-    constructor(username, password, name, surname, email, birthDate, address, phoneNumber) {
+export class User{
+    static users = new Map();
+
+    constructor(id, username, password, name, surname, email, birthDate, address, phoneNumber) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
