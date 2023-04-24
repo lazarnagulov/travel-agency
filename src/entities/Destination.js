@@ -31,8 +31,6 @@ export class Destination
 
         let tbody = table.createTBody();
 
-
-        //"ID", "Name", "Description", "Type", "Transport", "Price", "Travelers"
         for(let [id, dest] of Destination.destinations){
             let row = tbody.insertRow()
            
@@ -61,7 +59,7 @@ export class Destination
             cell.appendChild(text);
             
             row.addEventListener('click', () => {
-                row.style.backgroundColor = "white";
+                row.style.backgroundColor = "aqua";
                 Destination.selectedDestinaion = row.children[0]
                 for(let r of table.rows){
                     if(r != row){
@@ -81,7 +79,7 @@ export class Destination
             `
                 <h3>${this.name}</h3>
                 <div id = "photo-container"></div>    
-                <div class = "destination-text">
+                <div class = "info-text destination-margin">
                     <p>
                         ${this.description} <br>
                         Type: ${this.type} <br>
@@ -89,8 +87,10 @@ export class Destination
                         Price: ${this.price} <br>
                         Travelers: ${this.maxTravelers} <br>
                         <a href = "#agency-info" id = "remove-destination">Show less</a>
+                        <a href = "#">Edit destination</a>
                     </p>
                 </div>
+                <br>
             `
         const container = document.getElementById("photo-container");
 
@@ -117,7 +117,7 @@ export class Destination
             if(!dest){
                 console.error(`Destination ${group[id]} does not exist!`);
             }
-            ret += `<a id = ${group[id]}>${dest.name}</a>`;
+            ret += `<a id = ${group[id]} href="#destination-info">${dest.name}</a>`;
         }
         return ret.slice(0,-2);
     }

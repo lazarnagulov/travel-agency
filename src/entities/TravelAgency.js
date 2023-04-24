@@ -66,7 +66,7 @@ export class TravelAgency
             cell.appendChild(text);
             
             row.addEventListener('click', () => {
-                row.style.backgroundColor = "white";
+                row.style.backgroundColor = "aqua";
                 TravelAgency.selectedAgency = row.children[0]
                 for(let r of table.rows){
                     if(r != row){
@@ -99,7 +99,7 @@ export class TravelAgency
         `
             <h3>${this.name}</h3>
             <img src="${this.logo}" alt = "${this.name}.jpg" referrerpolicy="no-referrer">
-            <div class = "info-text">
+            <div class = "info-text info-margin">
                 <p>
                     Address: ${this.address} <br>
                     Year: ${this.yearOfOpening} <br>

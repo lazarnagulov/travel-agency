@@ -70,7 +70,7 @@ export class User{
             cell.appendChild(text)
 
             row.addEventListener('click', () => {
-                row.style.backgroundColor = "white";
+                row.style.backgroundColor = "aqua";
                 User.selectedUser = row.children[0]
                 for(let r of table.rows){
                     if(r != row){

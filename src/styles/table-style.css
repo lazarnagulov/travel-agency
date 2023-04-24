@@ -1,8 +1,14 @@
+.table-title{
+    background-color: #333;
+    padding: 1rem;
+    color:white;
+}
+
 .table-overflow{
-    overflow-x: scroll;
     max-width: 80%;
     padding: 1rem;
     margin: auto;
+    overflow-x: scroll;
 }
 
 .table-layout{
@@ -20,11 +26,12 @@
 }
 
 .table-layout thead{
-    background-color: #333;
+    color:white;
+    background: linear-gradient(to right, #00b4db, #0083b0);
 }
 
 .table-layout tbody:nth-child(even){
-    background-color: rgb(101, 100, 100);
+    background-color: white;
 }
 
 .options{
@@ -40,4 +47,11 @@
     cursor: pointer;
     padding: 1rem;
     background-color: #333;
+}
+
+@media (min-width: 1350px) {
+    .table-overflow{
+        overflow-x: hidden;
+    }
+    
 }

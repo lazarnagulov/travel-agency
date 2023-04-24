@@ -35,13 +35,7 @@
 .agency h3{
     color:#444;
     font-size: 22px;
-    padding:1rem 0;
-}
-
-.agency p{
-    color:#777;
-    font-size: 15px;
-    line-height: 1.8;
+    padding: 1rem 0;
 }
 
 .agency .btn{
@@ -82,18 +76,24 @@
 #agency-info h3{
     font-size: 2rem;
     text-align: center;
+    color: white;
+    padding: 1rem;
+    background-color: #333;
 }
 
 .info-text{
     display: flex;
     flex-direction: column;
-    margin: 2rem;
     background-color: white;
     font-size: 1rem;
     word-wrap: break-word;
-    padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.info-margin{
+    padding: 3rem;
+    margin: 2rem;
 }
 
 .info-text p{
@@ -108,6 +108,7 @@
     background-color: #333;
     padding: 1rem;
     border-radius: 10px;
+    text-decoration: none;
 }
 
 .destinations{
@@ -129,31 +130,52 @@
     display: none;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-#destination-info p, h3{
-    text-align: center;
+    width: 90%;
+    margin: auto;
+    margin-top: 2rem;
 }
 
 #destination-info h3{
+    text-align: center;
+    color: white;
     font-size: 2rem;
+    background-color: #333;
+    padding: 1rem;
+    margin-bottom: 1rem;
 }
 
 #destination-info p{
-    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+#destination-info a{
+    width: 20%;
+    padding: 1rem;
+    margin: 1rem auto;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+#destination-info a:hover{
+    letter-spacing: 1px;
+    transform: scale(1.03);
 }
 
 #photo-container{
     display: flex;
+    justify-content: center;
     gap: 2rem;
-    background: linear-gradient(to right, #00b4db, #0083b0);
     flex-wrap: wrap;
     border-radius: 10px;
-    padding: 2rem;
     margin: auto;
 }
 
 #photo-container img{
-    height: 9.5rem;
+    height: 7rem;
     max-width: 15rem;
 }
+
+.destination-margin{
+    margin: 2rem;
+}
+
