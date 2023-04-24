@@ -2,6 +2,9 @@ export class Destination
 {
     static destinationsGroup = new Map();
     static destinations = new Map();
+    static headers = ["ID", "Name", "Type", "Transport", "Price", "Travelers"] 
+
+    static selectedDestinaion;
 
     constructor(id, name, description, photos, type, typeOfTransport, price, maxTravelers)
     {
@@ -15,28 +18,90 @@ export class Destination
         this.maxTravelers = maxTravelers;
     }
 
-    static generateTable(){
-        
-    }
+    static generateTable(table){
+        let thead = table.createTHead();
+        let row = thead.insertRow();
 
-    createSlideShow(){
-        
+        for(let header in Destination.headers){
+            let th = document.createElement("th");
+            let text = document.createTextNode(Destination.headers[header]);
+            th.appendChild(text);
+            row.appendChild(th);
+        }
+
+        let tbody = table.createTBody();
+
+
+        //"ID", "Name", "Description", "Type", "Transport", "Price", "Travelers"
+        for(let [id, dest] of Destination.destinations){
+            let row = tbody.insertRow()
+           
+            let cell = row.insertCell();
+            let text = document.createTextNode(id);
+            cell.appendChild(text);
+            
+            cell = row.insertCell();
+            text = document.createTextNode(dest.name);
+            cell.appendChild(text);
+
+            cell = row.insertCell();
+            text = document.createTextNode(dest.type);
+            cell.appendChild(text);
+
+            cell = row.insertCell();
+            text = document.createTextNode(dest.typeOfTransport);
+            cell.appendChild(text);
+
+            cell = row.insertCell();
+            text = document.createTextNode(dest.price);
+            cell.appendChild(text);
+
+            cell = row.insertCell();
+            text = document.createTextNode(dest.maxTravelers);
+            cell.appendChild(text);
+            
+            row.addEventListener('click', () => {
+                row.style.backgroundColor = "white";
+                Destination.selectedDestinaion = row.children[0]
+                for(let r of table.rows){
+                    if(r != row){
+                        r.style.backgroundColor = "";
+                    }
+                }
+            })
+        }
+
+
     }
 
     createDestinationInfo(){
         const info = document.getElementById("destination-info");
+        info.style.display = "block";
         info.innerHTML = 
             `
-                <h2>${this.name}</h2>
-                <div class = "slideshow-container">${createSlideShow()}</div>    
-                <h4>
-                    Description: ${this.description} <br>
-                    Type: ${this.type} <br>
-                    Transport: ${this.typeOfTransport} <br>
-                    Price: ${this.price} <br>
-                    Travelers: ${this.maxTravelers} <br>
-                </h4>
+                <h3>${this.name}</h3>
+                <div id = "photo-container"></div>    
+                <div class = "destination-text">
+                    <p>
+                        ${this.description} <br>
+                        Type: ${this.type} <br>
+                        Transport: ${this.typeOfTransport} <br>
+                        Price: ${this.price} <br>
+                        Travelers: ${this.maxTravelers} <br>
+                        <a href = "#agency-info" id = "remove-destination">Show less</a>
+                    </p>
+                </div>
             `
+        const container = document.getElementById("photo-container");
+
+        for(let photo of this.photos){
+            container.innerHTML += 
+            `<img src="${photo}" alt="${this.name + ".jpg"}" id = ${photo} referrerpolicy="no-referrer">`
+        }
+
+        document.getElementById("remove-destination").addEventListener('click', () =>{
+            info.style.display = "none";
+        })
     }
 
     static getDestinationsFromGroup(groupId){
@@ -50,9 +115,9 @@ export class Destination
         for(let id in group){
             const dest = this.destinations.get(group[id]);
             if(!dest){
-                console.error(`Destination ${id} does not exist!`);
+                console.error(`Destination ${group[id]} does not exist!`);
             }
-            ret += `<a id = ${id}>${dest.name}</a><br> `;
+            ret += `<a id = ${group[id]}>${dest.name}</a>`;
         }
         return ret.slice(0,-2);
     }

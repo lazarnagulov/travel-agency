@@ -33,8 +33,6 @@ export class User{
         for(let [id, user] of User.users){
             let row = tbody.insertRow()
            
-            console.log(row);
-
             let cell = row.insertCell();
             let text = document.createTextNode(id);
             cell.appendChild(text);
@@ -72,10 +70,9 @@ export class User{
             cell.appendChild(text)
 
             row.addEventListener('click', () => {
-                row.style.backgroundColor = "red";
+                row.style.backgroundColor = "white";
                 User.selectedUser = row.children[0]
                 for(let r of table.rows){
-                    console.log(r);
                     if(r != row){
                         r.style.backgroundColor = "";
                     }

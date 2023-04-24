@@ -67,33 +67,42 @@
 #agency-info{
     display: none;
     flex-direction: column;
-    padding: 2rem;
+    width: 90%;
+    margin:auto;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
     border-radius: 5px;
 }
 
 #agency-info img{
-    padding: 2rem;    
+    margin: 1rem auto;
+    height: 50%;
+    width: 50%;   
 }
 
-#agency-info h2{
-    font-size: 3rem;
+#agency-info h3{
+    font-size: 2rem;
+    text-align: center;
 }
 
 .info-text{
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 2rem;
     background-color: white;
-    font-size: 2rem;
-    padding: 2rem;
+    font-size: 1rem;
+    word-wrap: break-word;
+    padding: 3rem;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
+.info-text p{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 .info-text a{
     display: flex;
-    font-size: 1.5rem;
     justify-content: center;
     color: white;
     background-color: #333;
@@ -103,4 +112,48 @@
 
 .destinations{
     padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1rem;    
+}
+
+.destinations a:hover{
+    letter-spacing: 1px;
+    transform: scale(1.03);
+}
+
+#destination-info{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#destination-info p, h3{
+    text-align: center;
+}
+
+#destination-info h3{
+    font-size: 2rem;
+}
+
+#destination-info p{
+    font-size: 1.5rem;
+}
+
+#photo-container{
+    display: flex;
+    gap: 2rem;
+    background: linear-gradient(to right, #00b4db, #0083b0);
+    flex-wrap: wrap;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: auto;
+}
+
+#photo-container img{
+    height: 9.5rem;
+    max-width: 15rem;
 }

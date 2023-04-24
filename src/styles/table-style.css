@@ -1,14 +1,43 @@
-#users-table{
+.table-overflow{
+    overflow-x: scroll;
+    max-width: 80%;
+    padding: 1rem;
+    margin: auto;
+}
+
+.table-layout{
     margin: auto;
     table-layout: fixed;
 }
 
-#users-table, th, tr, td{
+.table-layout, th, tr, td{
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-#users-table th, tr{
+.table-layoutth, tr{
     padding: 0.5rem;
 }
-  
+
+.table-layout thead{
+    background-color: #333;
+}
+
+.table-layout tbody:nth-child(even){
+    background-color: rgb(101, 100, 100);
+}
+
+.options{
+    display:flex;
+    margin: auto;
+    justify-content: space-evenly;
+    color: white;
+    padding: 1rem;
+    width: 20%;
+}
+
+.options p{
+    cursor: pointer;
+    padding: 1rem;
+    background-color: #333;
+}

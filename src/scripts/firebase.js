@@ -5,8 +5,10 @@ import { User } from "../entities/User.js";
 const firebaseURL = "https://turistickaagencija-e6403-default-rtdb.europe-west1.firebasedatabase.app"; 
 
 const agenciesContainer = document.getElementById("agencies-container");
-const userTable = document.getElementById("users-table");
 
+const userTable = document.getElementById("users-table");
+const destinationTable = document.getElementById("destinations-table");
+const agencyTable = document.getElementById("agencies-table");
 
 
 function createAgencies(agenciesData){
@@ -26,14 +28,21 @@ function createAgencies(agenciesData){
         )
     }
     if(agenciesContainer){
+        let cards = "";
         for(let [_, agency] of TravelAgency.agencies){
-            agency.createCard(agenciesContainer);
+            let card = agency.createCard();
+            cards += card;
         }
+        agenciesContainer.innerHTML = cards;
         for(let [id, agency] of TravelAgency.agencies){
             document.getElementById(id).addEventListener('click', () => {
                 agency.createAgencyInfo();
             })
         }
+    }
+
+    if(agencyTable){
+        TravelAgency.generateTable(agencyTable);
     }
 
 }
@@ -61,13 +70,16 @@ function createDestinations(destinationsData){
             Destination.destinations.set(id, newDestination);
         }
     }
+
+    if(destinationTable){
+        Destination.generateTable(destinationTable);
+    }
 }
 
 
 function createUsers(usersData){
     for(let id in usersData){
         const user = usersData[id];
-        console.log(user.brojTelefona);
         User.users.set(id,
             new User(
                 id,

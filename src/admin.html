@@ -31,7 +31,7 @@
               </nav>
         </header>
         <main>
-            <div class="popup-login" id="login-form">
+            <div class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
                     <label for="username">Username: </label> <br>
@@ -41,7 +41,7 @@
                     <input type="submit">
                 </form>
             </div>
-            <div class="popup-login bg-color" id="register-form">
+            <div class="popup-login register-width" id="register-form">
                 <form action="#">
                     <h2>Register</h2> <br>
                     <label for="username">Username: </label> 
@@ -63,20 +63,58 @@
                     <div class="login-btns">
                         <button><p>Register</p></button>
                     </div>
-                    
                 </form>
             </div>
+            <h2>Users</h2>
             <section id = "users">
-                <h2>Users</h2>
-                <table id = "users-table"></table>
+                <div class="table-overflow">
+                    <table id = "users-table" class="table-layout"></table>
+                </div>
+                <div class="options">
+                    <div class="create-user">
+                        <p>Create</p>
+                    </div>
+                    <div class="delete-user">
+                        <p>Delete</p>
+                    </div>
+                    <div class="edit-user">
+                        <p>Edit</p>
+                    </div>
+                </div>
             </section>
-            <section id = "agencies" >
-                <h2>Agencies</h2>
-                <table id = "agencies-table"></table>
+            <h2>Agencies</h2>
+            <section id = "agencies">
+                <div class="table-overflow">
+                    <table id = "agencies-table" class="table-layout"></table>
+                </div>
+                <div class="options">
+                    <div class="create-agency">
+                        <p>Create</p>
+                    </div>
+                    <div class="delete-agency">
+                        <p>Delete</p>
+                    </div>
+                    <div class="edit-agency">
+                        <p>Edit</p>
+                    </div>
+                </div>
             </section>
+            <h2>Destinations</h2>
             <section id = "destinations">
-                <h2>Destinations</h2>
-                <table id = "destinations-table"></table>
+                <div class="table-overflow">
+                    <table id = "destinations-table" class="table-layout"></table>
+                </div>
+                <div class="options">
+                    <div class="create-destination">
+                        <p>Create</p>
+                    </div>
+                    <div class="delete-destination">
+                        <p>Delete</p>
+                    </div>
+                    <div class="edit-destination">
+                        <p>Edit</p>
+                    </div>
+                </div>
             </section>
         </main>
         <footer>
