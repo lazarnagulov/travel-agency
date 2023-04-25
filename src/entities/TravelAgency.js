@@ -6,6 +6,7 @@ export class TravelAgency
     static headers = ["ID", "Name", "Address", "Year", "Phone number", "Email", "Destination"]
 
     static selectedAgency;
+    static selectedRow;
 
     constructor(id, name, address, yearOfOpening, logo, phoneNumber, email, destinations)
     {
@@ -18,6 +19,24 @@ export class TravelAgency
         this.email = email;
         this.destinations = destinations;
     }
+
+    addAgency(agency){
+        agencies.push(agency.id, agency);
+    }
+
+    static removeAgency(id){
+        if(!TravelAgency.agencies.has(id)){
+            console.error("Agency does not exist!");
+            return false;
+        }
+        TravelAgency.agencies.delete(id);
+        return true;
+    }
+
+    editAgency(){
+
+    }
+
 
     static generateTable(table){
         let thead = table.createTHead();
@@ -34,9 +53,9 @@ export class TravelAgency
 
         for(let [id, agency] of TravelAgency.agencies){
             let row = tbody.insertRow()
-           
+            row.id = id;
 
-            //"ID", "Name", "Address", "Year", "Phone number", "Email", "Destination"
+
             let cell = row.insertCell();
             let text = document.createTextNode(id);
             cell.appendChild(text);
@@ -67,7 +86,8 @@ export class TravelAgency
             
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
-                TravelAgency.selectedAgency = row.children[0]
+                TravelAgency.selectedRow = row;
+                TravelAgency.selectedAgency = TravelAgency.agencies.get(row.children[0].innerText);
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -75,9 +95,18 @@ export class TravelAgency
                 }
             })
         }
-
+        console.log(TravelAgency.agencies);
+        document.getElementById("delete-agency").addEventListener('click', () => {
+            if(confirm(`Are you sure you want to delete '${TravelAgency.selectedAgency.name}'?`)){
+                if(TravelAgency.removeAgency(TravelAgency.selectedAgency.id)){
+                    const rowId = TravelAgency.selectedRow.getAttribute("id");
+                    document.getElementById(rowId).remove();
+                }
+            }
+        });
         
     }
+
     createCard(){
         return(
             `
@@ -89,6 +118,9 @@ export class TravelAgency
             `
         )
     }
+
+    
+
 
     createAgencyInfo(){
         const info = document.getElementById("agency-info");
