@@ -20,7 +20,7 @@ export class TravelAgency
         this.destinations = destinations;
     }
 
-    addAgency(agency){
+    static addAgency(agency){
         agencies.push(agency.id, agency);
     }
 
@@ -95,7 +95,6 @@ export class TravelAgency
                 }
             })
         }
-        console.log(TravelAgency.agencies);
         document.getElementById("delete-agency").addEventListener('click', () => {
             if(confirm(`Are you sure you want to delete '${TravelAgency.selectedAgency.name}'?`)){
                 if(TravelAgency.removeAgency(TravelAgency.selectedAgency.id)){
@@ -118,9 +117,6 @@ export class TravelAgency
             `
         )
     }
-
-    
-
 
     createAgencyInfo(){
         const info = document.getElementById("agency-info");

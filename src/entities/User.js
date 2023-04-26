@@ -2,7 +2,9 @@
 export class User{
     static users = new Map();
     static headers = ["ID", "Username", "Password", "Name", "Surname", "Email", "Birth", "Address", "Phone number"];
+    
     static selectedUser;
+    static selectedRow;
 
     constructor(id, username, password, name, surname, email, birthDate, address, phoneNumber) {
         this.id = id;
@@ -14,6 +16,23 @@ export class User{
         this.birthDate = birthDate;
         this.address = address;
         this.phoneNumber = phoneNumber;
+    }
+
+    static addUser(user){
+        User.users.push(destiantion.id, user);
+    }
+
+    static removeUser(id){
+        if(!User.users.has(id)){
+            console.error("User does not exist!");
+            return false;
+        }
+        User.users.delete(id);
+        return true;
+    }
+
+    editUser(){
+
     }
 
     static generateTable(table){
@@ -29,10 +48,10 @@ export class User{
 
         let tbody = table.createTBody();
 
-
         for(let [id, user] of User.users){
             let row = tbody.insertRow()
-           
+            row.id = id;
+
             let cell = row.insertCell();
             let text = document.createTextNode(id);
             cell.appendChild(text);
@@ -71,7 +90,8 @@ export class User{
 
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
-                User.selectedUser = row.children[0]
+                User.selectedRow = row;
+                User.selectedUser = User.users.get(row.children[0].innerText);
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -79,18 +99,19 @@ export class User{
                 }
             })
         }
+
+        document.getElementById("delete-user").addEventListener('click', () => {
+            if(confirm(`Are you sure you want to delete '${User.selectedUser.name}'?`)){
+                if(User.removeUser(User.selectedUser.id)){
+                    const rowId = User.selectedRow.getAttribute("id");
+                    document.getElementById(rowId).remove();
+                }
+            }
+        });
     }
 
     static registerUser(username, password, name, surname, email, birthDate, address, phoneNumber){
 
-    }
-
-    static updateUser(user){
-
-    }
-
-    static removeUser(user){
-        User.users.delete(user);
     }
 
 }

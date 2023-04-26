@@ -4,7 +4,8 @@ export class Destination
     static destinations = new Map();
     static headers = ["ID", "Name", "Type", "Transport", "Price", "Travelers"] 
 
-    static selectedDestinaion;
+    static selectedDestination;
+    static selectedRow;
 
     constructor(id, name, description, photos, type, typeOfTransport, price, maxTravelers)
     {
@@ -16,6 +17,23 @@ export class Destination
         this.typeOfTransport = typeOfTransport;
         this.price = price;
         this.maxTravelers = maxTravelers;
+    }
+
+    static addDestination(destination){
+        destinations.push(destiantion.id, destination);
+    }
+
+    static removeDestination(id){
+        if(!Destination.destinations.has(id)){
+            console.error("Destination does not exist!");
+            return false;
+        }
+        Destination.destinations.delete(id);
+        return true;
+    }
+
+    editDestination(){
+
     }
 
     static generateTable(table){
@@ -33,7 +51,8 @@ export class Destination
 
         for(let [id, dest] of Destination.destinations){
             let row = tbody.insertRow()
-           
+            row.id = id;
+
             let cell = row.insertCell();
             let text = document.createTextNode(id);
             cell.appendChild(text);
@@ -60,7 +79,8 @@ export class Destination
             
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
-                Destination.selectedDestinaion = row.children[0]
+                Destination.selectedRow = row;
+                Destination.selectedDestination = Destination.destinations.get(row.children[0].innerText);
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -68,8 +88,14 @@ export class Destination
                 }
             })
         }
-
-
+        document.getElementById("delete-destination").addEventListener('click', () => {
+            if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.username}'?`)){
+                if(Destination.removeDestination(Destination.selectedDestination.id)){
+                    const rowId = Destination.selectedRow.getAttribute("id");
+                    document.getElementById(rowId).remove();
+                }
+            }
+        });
     }
 
     createDestinationInfo(){
