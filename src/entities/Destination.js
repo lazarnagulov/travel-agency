@@ -20,7 +20,7 @@ export class Destination
     }
 
     static addDestination(destination){
-        destinations.push(destiantion.id, destination);
+        destinations.push(destination.id, destination);
     }
 
     static removeDestination(id){
@@ -143,7 +143,7 @@ export class Destination
             if(!dest){
                 console.error(`Destination ${group[id]} does not exist!`);
             }
-            ret += `<a id = ${group[id]} href="#destination-info">${dest.name}</a>`;
+            ret += `<a id = ${crypto.randomUUID()} href="#destination-info" name = "${group[id]}">${dest.name}</a>`;
         }
         return ret.slice(0,-2);
     }

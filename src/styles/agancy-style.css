@@ -38,6 +38,16 @@
     padding: 1rem 0;
 }
 
+.agency a{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    text-decoration: none;
+}
+
+
 .agency .btn{
     margin-top: 10px;
     display: inline-block;

@@ -28,17 +28,7 @@ function createAgencies(agenciesData){
         )
     }
     if(agenciesContainer){
-        let cards = "";
-        for(let [_, agency] of TravelAgency.agencies){
-            let card = agency.createCard();
-            cards += card;
-        }
-        agenciesContainer.innerHTML = cards;
-        for(let [id, agency] of TravelAgency.agencies){
-            document.getElementById(id).addEventListener('click', () => {
-                agency.createAgencyInfo();
-            })
-        }
+        TravelAgency.createCards();
     }
 
     if(agencyTable){
