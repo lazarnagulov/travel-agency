@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/header-style.css">
     <link rel="stylesheet" href="styles/agancy-style.css">
     <link rel="stylesheet" href="styles/popups-style.css">
+    <link rel="stylesheet" href="styles/destination-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agencies</title>
 </head>
@@ -33,33 +34,35 @@
             <div class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
-                    <label for="username">Username: </label> <br>
-                    <input type="text" name="username" id=""> <br>
-                    <label for="password">Password: </label> <br>
-                    <input type="password" name="password" id=""> <br> <br>
+                    <label for="username"><strong>Username:</strong></label> <br>
+                    <input id = "l-username" type="text" name="username" id=""> <br>
+                    <label for="password"><strong>Password:</strong></label> <br>
+                    <input id = "l-password" type="password" name="password" id=""> <br> <br>
                     <input type="submit">
                 </form>
             </div>
             <div class="popup-login register-width" id="register-form">
                 <form action="#">
                     <h2>Register</h2> <br>
-                    <label for="username">Username: </label> 
-                    <input type="text" name="username" id=""> <br> <br>
-                    <label for="password">Password: </label> 
-                    <input type="text" name="password" id=""> <br> <br>
-                    <label for="name">Name: </label> 
-                    <input type="text" name="name" id=""> <br> <br>
-                    <label for="surname">Surname: </label>
-                    <input type="text" name="surname" id=""> <br> <br>
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id=""> <br> <br>
-                    <label for="date">Birth date: </label>
-                    <input type="date" name="date" id=""> <br> <br>
-                    <label for="address">Address: </label>
-                    <input type="text" name="address" id=""> <br> <br>
-                    <label for="password">Phone number: </label>
-                    <input type="number" name="phonenumber" id=""> <br> <br>
-                    <input type="submit">
+                    <label for="username"><strong>Username:</strong></label> 
+                    <input id = "username" type="text" name="username" id=""> <br> <br>
+                    <label for="password"><strong>Password:</strong></label> 
+                    <input id = "password" type="text" name="password" id=""> <br> <br>
+                    <label for="name"><strong>Name:</strong></label> 
+                    <input id = "name" type="text" name="name" id=""> <br> <br>
+                    <label for="surname"><strong>Surname:</strong></label>
+                    <input id = "surname" type="text" name="surname" id=""> <br> <br>
+                    <label for="email"><strong>Email:</strong></label>
+                    <input id = "email" type="email" name="email" id=""> <br> <br>
+                    <label for="date"><strong>Birth date:</strong></label>
+                    <input id = "date" type="date" name="date" id=""> <br> <br>
+                    <label for="address"><strong>Address:</strong></label>
+                    <input id = "address" type="text" name="address" id=""> <br> <br>
+                    <label for="phonenumber"><strong>Phone number:</strong></label>
+                    <input id = "phonenumber" type="number" name="phonenumber" id=""> <br> <br>
+                    <div class="login-btns">
+                        <button><p>Register</p></button>
+                    </div>
                 </form>
             </div>
             <section class="agencies-list">
@@ -70,8 +73,8 @@
             <br>
             <br>
         </main>
-        <footer>
-
+        <footer class = "bg-color">
+            <p>&copy; Lazar Nagulov - Travel Agencies - WD 2023.</p>
         </footer>
         <script src="./scripts/toggleButton.js"></script>
         <script src="./scripts/popups.js"></script>

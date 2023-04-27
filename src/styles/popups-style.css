@@ -9,6 +9,7 @@
     border-radius: 10px;
     background-color: white;
     z-index: 3;
+    border: 1px solid black;
     justify-content: center;
     margin: auto;
 }

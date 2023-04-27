@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/agancy-style.css">
     <link rel="stylesheet" href="styles/popups-style.css">
     <link rel="stylesheet" href="styles/table-style.css">
+    <link rel="stylesheet" href="styles/destination-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agencies</title>
 </head>
@@ -34,32 +35,32 @@
             <div class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
-                    <label for="username">Username: </label> <br>
-                    <input type="text" name="username" id=""> <br>
-                    <label for="password">Password: </label> <br>
-                    <input type="password" name="password" id=""> <br> <br>
+                    <label for="username"><strong>Username:</strong></label> <br>
+                    <input id = "l-username" type="text" name="username" id=""> <br>
+                    <label for="password"><strong>Password:</strong></label> <br>
+                    <input id = "l-password" type="password" name="password" id=""> <br> <br>
                     <input type="submit">
                 </form>
             </div>
             <div class="popup-login register-width" id="register-form">
                 <form action="#">
                     <h2>Register</h2> <br>
-                    <label for="username">Username: </label> 
-                    <input type="text" name="username" id=""> <br> <br>
-                    <label for="password">Password: </label> 
-                    <input type="text" name="password" id=""> <br> <br>
-                    <label for="name">Name: </label> 
-                    <input type="text" name="name" id=""> <br> <br>
-                    <label for="surname">Surname: </label>
-                    <input type="text" name="surname" id=""> <br> <br>
-                    <label for="email">Email: </label>
-                    <input type="email" name="email" id=""> <br> <br>
-                    <label for="date">Birth date: </label>
-                    <input type="date" name="date" id=""> <br> <br>
-                    <label for="address">Address: </label>
-                    <input type="text" name="address" id=""> <br> <br>
-                    <label for="password">Phone number: </label>
-                    <input type="number" name="phonenumber" id=""> <br> <br>
+                    <label for="username"><strong>Username:</strong></label> 
+                    <input id = "username" type="text" name="username" id=""> <br> <br>
+                    <label for="password"><strong>Password:</strong></label> 
+                    <input id = "password" type="text" name="password" id=""> <br> <br>
+                    <label for="name"><strong>Name:</strong></label> 
+                    <input id = "name" type="text" name="name" id=""> <br> <br>
+                    <label for="surname"><strong>Surname:</strong></label>
+                    <input id = "surname" type="text" name="surname" id=""> <br> <br>
+                    <label for="email"><strong>Email:</strong></label>
+                    <input id = "email" type="email" name="email" id=""> <br> <br>
+                    <label for="date"><strong>Birth date:</strong></label>
+                    <input id = "date" type="date" name="date" id=""> <br> <br>
+                    <label for="address"><strong>Address:</strong></label>
+                    <input id = "address" type="text" name="address" id=""> <br> <br>
+                    <label for="phonenumber"><strong>Phone number:</strong></label>
+                    <input id = "phonenumber" type="number" name="phonenumber" id=""> <br> <br>
                     <div class="login-btns">
                         <button><p>Register</p></button>
                     </div>
@@ -101,6 +102,35 @@
             </section>
             <h2 class="table-title">Destinations</h2>
             <section id = "destinations">
+                <div class="edit-destination">
+                    <form>
+                        <h2 id = "destination-form-name">Edit destination</h2>
+                        <br>
+                        <label for="destination-name"><strong>Name:</strong></label>
+                        <input id = "destination-name" type="text" name = "destination-name"><br><br>
+                        <label for="description"><strong>Description:</strong></label>
+                        <textarea id = "destination-description" name = "destination-description"></textarea><br><br>
+                        <p><strong>Type:</strong></p>
+                        <input id = "destination-type-summer" type="radio" name = "destination-type" value = "summer">
+                        <label for="destination-type">Summer vacation</label>
+                        <input id = "destination-type-winter" type="radio" name = "destination-type" value = "winter">
+                        <label for="destination-type">Winter vacation</label>
+                        <input id = "destination-type-cities" type="radio" name = "destination-type" value = "cities">
+                        <label for="destination-type">Europe cities</label>
+                        <p><strong>Transport:</strong></p>
+                        <input id = "destination-transport-airplane" type="radio" name = "destination-transport" value = "airplane">
+                        <label for="destination-transport">Airplane</label>
+                        <input id = "destination-transport-autobus" type="radio" name = "destination-transport" value = "autobus">
+                        <label for="destination-transport">Autobus</label>
+                        <input id = "destination-transport-own" type="radio" name = "destination-transport" value = "own">
+                        <label for="destination-transport">Own transport</label>
+                        <br><br>
+                        <label for="destination-price"><strong>Price:</strong></label>
+                        <input id = "destination-price" type="text" name = "destination-price"><br><br>
+                        <label for="destination-travelers"><strong>Travelers:</strong></label>
+                        <input id = "destination-travelers" type="number" name = "destination-travelers"><br><br>
+                    </form>
+                </div>
                 <div class="table-overflow">
                     <table id = "destinations-table" class="table-layout"></table>
                 </div>
@@ -117,8 +147,8 @@
                 </div>
             </section>
         </main>
-        <footer>
-
+        <footer class="bg-color">
+            <p>&copy; Lazar Nagulov - Travel Agencies - WD 2023.</p>
         </footer>
         <script src="./scripts/toggleButton.js"></script>
         <script src="./scripts/popups.js"></script>

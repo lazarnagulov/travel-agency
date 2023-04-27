@@ -30,11 +30,9 @@ function createAgencies(agenciesData){
     if(agenciesContainer){
         TravelAgency.createCards();
     }
-
     if(agencyTable){
         TravelAgency.generateTable(agencyTable);
     }
-
 }
 
 function createDestinations(destinationsData){
@@ -84,23 +82,21 @@ function createUsers(usersData){
             )
         )
     }
-
     if(userTable){
         User.generateTable(userTable);
     }
-    
 }
 
 async function fetchData(){
     let response = await fetch(firebaseURL + '/agencjie.json');
     const agenciesData = await response.json();
-
+    
     response = await fetch(firebaseURL + '/destinacije.json');
     const destinationsData = await response.json();
 
     response = await fetch(firebaseURL + '/korisnici.json');
     const usersData = await response.json();
-
+    
     createDestinations(destinationsData);
     createAgencies(agenciesData);
     createUsers(usersData);

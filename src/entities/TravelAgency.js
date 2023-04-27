@@ -113,15 +113,14 @@ export class TravelAgency
                 <div class="agency"> 
                     <img src="${agency.logo}" alt="${agency.name + ".jpg"}" referrerpolicy="no-referrer">
                     <h3>${agency.name}</h3>
-                    <h4>Destinations:</h4>
+                    <strong>Destinations:</strong>
                     <span class = "card-destinations">${Destination.getDestinationsFromGroup(agency.destinations)}</span>
-                    <a href="#agency-info" class="btn" id = ${agency.id}>Read more</a>
+                    <a href="#agency-info" class="btn" id = ${agency.id}>More info</a>
                 </div>
             `    
             agenciesContainer.innerHTML += card;
             ++count;
         }
-
 
         while(count--){
             let children = document.getElementsByClassName("card-destinations")[count].children;  
@@ -130,7 +129,6 @@ export class TravelAgency
                 if(id){
                     document.getElementById(children[i].getAttribute("id")).addEventListener('click', () => {
                         let dest = Destination.destinations.get(id);
-                        console.log(dest);
                         if(dest){
                             dest.createDestinationInfo();
                         }
@@ -157,11 +155,11 @@ export class TravelAgency
             <img src="${this.logo}" alt = "${this.name}.jpg" referrerpolicy="no-referrer">
             <div class = "info-text info-margin">
                 <p>
-                    Address: ${this.address} <br>
-                    Year: ${this.yearOfOpening} <br>
-                    Phone number: ${this.phoneNumber} <br>   
-                    Email: ${this.email} <br>
-                    Destinations: <br>
+                    <strong>Address</strong>: ${this.address} <br>
+                    <strong>Year</strong>: ${this.yearOfOpening} <br>
+                    <strong>Phone number:</strong> ${this.phoneNumber} <br>   
+                    <strong>Email:</strong> ${this.email} <br>
+                    <strong>Destinations:</strong> <br>
                 </p>
                 <div class = "destinations">
                     ${destinations}

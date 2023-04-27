@@ -101,7 +101,7 @@ export class User{
         }
 
         document.getElementById("delete-user").addEventListener('click', () => {
-            if(confirm(`Are you sure you want to delete '${User.selectedUser.name}'?`)){
+            if(confirm(`Are you sure you want to delete '${User.selectedUser.username}'?`)){
                 if(User.removeUser(User.selectedUser.id)){
                     const rowId = User.selectedRow.getAttribute("id");
                     document.getElementById(rowId).remove();

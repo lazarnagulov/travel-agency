@@ -89,7 +89,7 @@ export class Destination
             })
         }
         document.getElementById("delete-destination").addEventListener('click', () => {
-            if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.username}'?`)){
+            if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.name}'?`)){
                 if(Destination.removeDestination(Destination.selectedDestination.id)){
                     const rowId = Destination.selectedRow.getAttribute("id");
                     document.getElementById(rowId).remove();
@@ -108,10 +108,10 @@ export class Destination
                 <div class = "info-text destination-margin">
                     <p>
                         ${this.description} <br>
-                        Type: ${this.type} <br>
-                        Transport: ${this.typeOfTransport} <br>
-                        Price: ${this.price} <br>
-                        Travelers: ${this.maxTravelers} <br>
+                        <strong>Type:</strong> ${this.type} <br>
+                        <strong>Transport:</strong> ${this.typeOfTransport} <br>
+                        <strong>Price:</strong> ${this.price} <br>
+                        <strong>Travelers:</strong> ${this.maxTravelers} <br>
                         <a href = "#agency-info" id = "remove-destination">Show less</a>
                         <a href = "#">Edit destination</a>
                     </p>

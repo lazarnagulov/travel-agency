@@ -33,13 +33,13 @@
 }
 
 .agency h3{
-    color:#444;
     font-size: 22px;
     padding: 1rem 0;
 }
 
 .agency a{
     display: flex;
+    color: black;
     justify-content: space-evenly;
     flex-direction: column;
     flex-wrap: wrap;
@@ -121,71 +121,4 @@
     text-decoration: none;
 }
 
-.destinations{
-    padding: 1rem;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 1rem;    
-}
-
-.destinations a:hover{
-    letter-spacing: 1px;
-    transform: scale(1.03);
-}
-
-#destination-info{
-    display: none;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 90%;
-    margin: auto;
-    margin-top: 2rem;
-}
-
-#destination-info h3{
-    text-align: center;
-    color: white;
-    font-size: 2rem;
-    background-color: #333;
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-#destination-info p{
-    margin: 2rem;
-}
-
-#destination-info a{
-    width: 20%;
-    padding: 1rem;
-    margin: 1rem auto;
-    font-size: 1rem;
-    text-decoration: none;
-}
-
-#destination-info a:hover{
-    letter-spacing: 1px;
-    transform: scale(1.03);
-}
-
-#photo-container{
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    border-radius: 10px;
-    margin: auto;
-}
-
-#photo-container img{
-    height: 7rem;
-    max-width: 15rem;
-}
-
-.destination-margin{
-    margin: 2rem;
-}
 
