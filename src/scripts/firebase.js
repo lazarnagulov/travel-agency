@@ -1,10 +1,15 @@
 import { TravelAgency } from "../entities/TravelAgency.js";
 import { Destination } from "../entities/Destination.js";
 import { User } from "../entities/User.js";
+import { loadDestination } from "./loadDestination.js";
+import { loadAgency } from "./loadAgency.js";
 
 const firebaseURL = "https://turistickaagencija-e6403-default-rtdb.europe-west1.firebasedatabase.app"; 
 
 const agenciesContainer = document.getElementById("agencies-container");
+
+const destinationInfoContainer = document.getElementById("destination-info");
+const agencyInfoContainer = document.getElementById("agency-info");
 
 const userTable = document.getElementById("users-table");
 const destinationTable = document.getElementById("destinations-table");
@@ -29,6 +34,9 @@ function createAgencies(agenciesData){
     }
     if(agenciesContainer){
         TravelAgency.createCards();
+    }
+    if(agencyInfoContainer){
+        loadAgency();
     }
     if(agencyTable){
         TravelAgency.generateTable(agencyTable);
@@ -56,9 +64,12 @@ function createDestinations(destinationsData){
                 Destination.destinationsGroup.get(groupId).push(id);
             }
             Destination.destinations.set(id, newDestination);
+            
         }
     }
-
+    if(destinationInfoContainer){
+        loadDestination();
+    }
     if(destinationTable){
         Destination.generateTable(destinationTable);
     }

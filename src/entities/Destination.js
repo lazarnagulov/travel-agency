@@ -112,7 +112,6 @@ export class Destination
                         <strong>Transport:</strong> ${this.typeOfTransport} <br>
                         <strong>Price:</strong> ${this.price} <br>
                         <strong>Travelers:</strong> ${this.maxTravelers} <br>
-                        <a href = "#agency-info" id = "remove-destination">Show less</a>
                         <a href = "#">Edit destination</a>
                     </p>
                 </div>
@@ -121,13 +120,8 @@ export class Destination
         const container = document.getElementById("photo-container");
 
         for(let photo of this.photos){
-            container.innerHTML += 
-            `<img src="${photo}" alt="${this.name + ".jpg"}" id = ${photo} referrerpolicy="no-referrer">`
+            container.innerHTML +=  `<img src="${photo}" alt="${this.name + ".jpg"}" id = ${photo} referrerpolicy="no-referrer">`
         }
-
-        document.getElementById("remove-destination").addEventListener('click', () =>{
-            info.style.display = "none";
-        })
     }
 
     static getDestinationsFromGroup(groupId){
@@ -137,15 +131,15 @@ export class Destination
             console.error("Group does not exist!");
             return;
         }
-
+        console.log(Destination.destinations)
         for(let id in group){
-            const dest = this.destinations.get(group[id]);
+            const dest = Destination.destinations.get(group[id]);
             if(!dest){
                 console.error(`Destination ${group[id]} does not exist!`);
             }
-            ret += `<a id = ${crypto.randomUUID()} href="#destination-info" name = "${group[id]}">${dest.name}</a>`;
+            ret += `<a id = ${crypto.randomUUID()} href='./destination.html?id=${dest.id}' name = "${group[id]}">${dest.name}</a>`;
         }
-        return ret.slice(0,-2);
+        return ret;
     }
 
 }

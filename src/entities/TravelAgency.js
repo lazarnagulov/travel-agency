@@ -106,7 +106,6 @@ export class TravelAgency
 
     static createCards(){
         const agenciesContainer = document.getElementById("agencies-container");
-        let count = 0;
         for(let [_, agency] of TravelAgency.agencies){
             let card = 
             `
@@ -115,38 +114,20 @@ export class TravelAgency
                     <h3>${agency.name}</h3>
                     <strong>Destinations:</strong>
                     <span class = "card-destinations">${Destination.getDestinationsFromGroup(agency.destinations)}</span>
-                    <a href="#agency-info" class="btn" id = ${agency.id}>More info</a>
+                    <a href="./agency.html?id=${agency.id}" class="btn" id = ${agency.id}>More info</a>
                 </div>
-            `    
-            agenciesContainer.innerHTML += card;
-            ++count;
-        }
-
-        while(count--){
-            let children = document.getElementsByClassName("card-destinations")[count].children;  
-            for(let i = 0; i < children.length; ++i){
-                let id = children[i].getAttribute("name");
-                if(id){
-                    document.getElementById(children[i].getAttribute("id")).addEventListener('click', () => {
-                        let dest = Destination.destinations.get(id);
-                        if(dest){
-                            dest.createDestinationInfo();
-                        }
-                    })
-                }
+            `
+            localStorage.setItem(`${agency.name}`, `${agency.id}`);   
+            if(agenciesContainer){ 
+                agenciesContainer.innerHTML += card;
             }
-        }
-
-        for(let [id, agency] of TravelAgency.agencies){
-            document.getElementById(id).addEventListener('click', () => {
-                agency.createAgencyInfo();
-            })
         }
     }
 
     createAgencyInfo(){
         const info = document.getElementById("agency-info");
         const destinations = Destination.getDestinationsFromGroup(this.destinations);
+        console.log(destinations);
         info.style.display = "flex";
         info.className = "bg-color";
         info.innerHTML = 
@@ -164,27 +145,8 @@ export class TravelAgency
                 <div class = "destinations">
                     ${destinations}
                 </div>
-                <a href = "#" id = "remove-info">Show less</a>
             </div>
         `
-
-        const children = document.getElementsByClassName("destinations")[0].children
-
-        for(let i = 0; i < children.length; ++i){
-            const id = children[i].getAttribute("name");
-            if(id){
-                document.getElementById(children[i].getAttribute("id")).addEventListener('click', () => {
-                    const dest = Destination.destinations.get(id);
-                    if(dest){
-                        dest.createDestinationInfo();
-                    }
-                })
-            }
-        }
-
-        document.getElementById("remove-info").addEventListener('click', () => {
-            info.style.display = "none";
-        })
     }
 
 }

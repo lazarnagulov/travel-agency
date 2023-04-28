@@ -17,9 +17,8 @@
     display: none;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 90%;
     margin: auto;
-    margin-top: 2rem;
+    width: 80%;
 }
 
 #destination-info h3{
@@ -78,4 +77,8 @@
     padding: 2rem;
     border-radius: 10px;
     border: 1px solid black;
+}
+
+.info-text p a{
+    width: fit-content;
 }
