@@ -1,6 +1,7 @@
 import { TravelAgency } from "../entities/TravelAgency.js";
 import { Destination } from "../entities/Destination.js";
 import { User } from "../entities/User.js";
+import { Error } from "../scripts/error.js"
 import { loadDestination } from "./loadDestination.js";
 import { loadAgency } from "./loadAgency.js";
 
@@ -99,18 +100,23 @@ function createUsers(usersData){
 }
 
 async function fetchData(){
-    let response = await fetch(firebaseURL + '/agencjie.json');
-    const agenciesData = await response.json();
-    
-    response = await fetch(firebaseURL + '/destinacije.json');
-    const destinationsData = await response.json();
+    try{
+        let response = await fetch(firebaseURL + '/agencjie.json');
+        const agenciesData = await response.json();
 
-    response = await fetch(firebaseURL + '/korisnici.json');
-    const usersData = await response.json();
+        response = await fetch(firebaseURL + '/destinacije.json');
+        const destinationsData = await response.json();
+
+        response = await fetch(firebaseURL + '/korisnici.json');
+        const usersData = await response.json();
+        
+        createDestinations(destinationsData);
+        createAgencies(agenciesData);
+        createUsers(usersData);
+    }catch{
+        window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
+    }
     
-    createDestinations(destinationsData);
-    createAgencies(agenciesData);
-    createUsers(usersData);
 }
 
 fetchData();

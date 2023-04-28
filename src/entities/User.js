@@ -1,3 +1,4 @@
+import { Error } from "../scripts/error.js";
 
 export class User{
     static users = new Map();
@@ -102,12 +103,23 @@ export class User{
         }
 
         document.getElementById("delete-user").addEventListener('click', () => {
+            if(!User.selectedUser){
+                alert("Please select user first!");
+                return;
+            }
             if(confirm(`Are you sure you want to delete '${User.selectedUser.username}'?`)){
                 if(User.removeUser(User.selectedUser.id)){
                     const rowId = User.selectedRow.getAttribute("id");
                     document.getElementById(rowId).remove();
                 }
             }
+        });
+        document.getElementById("edit-user").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        });
+
+        document.getElementById("add-user").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
         });
     }
 

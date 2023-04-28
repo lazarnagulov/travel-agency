@@ -1,4 +1,5 @@
 import { Destination  } from "./Destination.js";
+import { Error } from "../scripts/error.js";
 
 export class TravelAgency{
     static agencies = new Map();
@@ -94,6 +95,10 @@ export class TravelAgency{
             })
         }
         document.getElementById("delete-agency").addEventListener('click', () => {
+            if(!TravelAgency.selectedAgency){
+                alert("Please select agency first!");
+                return;
+            }
             if(confirm(`Are you sure you want to delete '${TravelAgency.selectedAgency.name}'?`)){
                 if(TravelAgency.removeAgency(TravelAgency.selectedAgency.id)){
                     const rowId = TravelAgency.selectedRow.getAttribute("id");
@@ -101,6 +106,14 @@ export class TravelAgency{
                 }
             }
         });
+
+        // document.getElementById("edit-agency").addEventListener('click', () => {
+        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        // });
+
+        // document.getElementById("add-agency").addEventListener('click', () => {
+        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        // });
         
     }
 
@@ -127,7 +140,6 @@ export class TravelAgency{
     createAgencyInfo(){
         const info = document.getElementById("agency-info");
         const destinations = Destination.getDestinationsFromGroup(this.destinations);
-        console.log(destinations);
         info.style.display = "flex";
         info.className = "bg-color";
         info.innerHTML = 

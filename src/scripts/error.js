@@ -3,6 +3,7 @@ export class Error{
     static AGENCY_NOT_FOUND = new Error("Agency not found!");
     static USER_NOT_FOUND = new Error("User not found!");
     static NOT_IMPLEMENTED = new Error("Not implemented!");
+    static DATABASE_ERROR = new Error("Data base error!");
 
     constructor(name){
         this.name = name;

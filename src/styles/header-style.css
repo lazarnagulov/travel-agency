@@ -9,15 +9,21 @@
     color: white;
 }
 
+.title-logo{
+    display: flex;
+}
+
+.title-logo img{
+    max-height: 90px;
+    max-width: 90px;
+}
+
 header h1{
     font-size: 2rem;
     margin-left: .5rem;
     color: white;
 }
 
-.title-logo{
-    display: flex;
-}
 .navbar-links {
     height: 100%;
 }
@@ -68,6 +74,10 @@ header h1{
         display: flex;
     }
 
+    .title-logo img{
+        height: 50%;
+    }
+
     .navbar-links {
         display: none;
         width: 100%;
@@ -82,6 +92,7 @@ header h1{
     .navbar-links ul li {
         text-align: center;
         position: relative;
+        top: -100%;
         z-index: 1;
         background: linear-gradient(to right, #00b4db, #0083b0);
     }
@@ -93,4 +104,11 @@ header h1{
     .navbar-links.active {
         display: flex;
     }
+}
+
+@media screen and (max-width: 320px) {
+    header h1{
+        font-size: 1.8rem;
+    }
+    
 }

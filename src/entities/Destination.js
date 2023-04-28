@@ -92,12 +92,24 @@ export class Destination
             });
         }
         document.getElementById("delete-destination").addEventListener('click', () => {
+            if(!Destination.selectedDestination){
+                alert("Please select destination first!");
+                return;
+            }
             if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.name}'?`)){
                 if(Destination.removeDestination(Destination.selectedDestination.id)){
                     const rowId = Destination.selectedRow.getAttribute("id");
                     document.getElementById(rowId).remove();
                 }
             }
+        });
+
+        document.getElementById("edit-destination").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        });
+
+        document.getElementById("add-destination").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
         });
     }
 
@@ -135,7 +147,6 @@ export class Destination
             console.error("Group does not exist!");
             return;
         }
-        console.log(Destination.destinations)
         for(let id in group){
             const dest = Destination.destinations.get(group[id]);
             if(!dest){
