@@ -119,3 +119,12 @@
     border-radius: 10px;
     text-decoration: none;
 }
+
+.back{
+    max-width: fit-content;
+    margin: auto;
+}
+
+.back:hover{
+    letter-spacing: 1px;
+}

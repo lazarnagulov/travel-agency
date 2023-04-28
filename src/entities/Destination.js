@@ -4,7 +4,7 @@ export class Destination
 {
     static destinationsGroup = new Map();
     static destinations = new Map();
-    static headers = ["ID", "Name", "Type", "Transport", "Price", "Travelers"] 
+    static headers = ["Name", "Type", "Transport", "Price", "Travelers"] 
 
     static selectedDestination;
     static selectedRow;
@@ -56,12 +56,12 @@ export class Destination
             let row = tbody.insertRow();
             row.id = id;
 
-            let cell = row.insertCell();
-            let text = document.createTextNode(id);
-            cell.appendChild(text);
+            // let cell = row.insertCell();
+            // let text = document.createTextNode(id);
+            // cell.appendChild(text);
             
-            cell = row.insertCell();
-            text = document.createTextNode(dest.name);
+            let cell = row.insertCell();
+            let text = document.createTextNode(dest.name);
             cell.appendChild(text);
 
             cell = row.insertCell();
@@ -83,7 +83,7 @@ export class Destination
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
                 Destination.selectedRow = row;
-                Destination.selectedDestination = Destination.destinations.get(row.children[0].innerText);
+                Destination.selectedDestination = Destination.destinations.get(row.getAttribute("id"));
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -93,7 +93,7 @@ export class Destination
         }
         document.getElementById("delete-destination").addEventListener('click', () => {
             if(!Destination.selectedDestination){
-                alert("Please select destination first!");
+                alert("Please select destination");
                 return;
             }
             if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.name}'?`)){
@@ -128,6 +128,7 @@ export class Destination
                         <strong>Price:</strong> ${this.price} <br>
                         <strong>Travelers:</strong> ${this.maxTravelers} <br>
                         <a href = "./error.html?msg=${Error.NOT_IMPLEMENTED.name}">Edit destination</a>
+                        <a href = "./index.html">Back</a>
                     </p>
                 </div>
                 <br>

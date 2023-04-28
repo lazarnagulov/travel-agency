@@ -3,7 +3,7 @@ import { Error } from "../scripts/error.js";
 
 export class TravelAgency{
     static agencies = new Map();
-    static headers = ["ID", "Name", "Address", "Year", "Phone number", "Email", "Destination"]
+    static headers = ["Name", "Address", "Year", "Phone number", "Email", "Destination"]
 
     static selectedAgency;
     static selectedRow;
@@ -55,12 +55,12 @@ export class TravelAgency{
             let row = tbody.insertRow()
             row.id = id;
 
-            let cell = row.insertCell();
-            let text = document.createTextNode(id);
-            cell.appendChild(text);
+            // let cell = row.insertCell();
+            // let text = document.createTextNode(id);
+            // cell.appendChild(text);
         
-            cell = row.insertCell();
-            text = document.createTextNode(agency.name);
+            let cell = row.insertCell();
+            let text = document.createTextNode(agency.name);
             cell.appendChild(text);
             
             cell = row.insertCell();
@@ -86,7 +86,7 @@ export class TravelAgency{
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
                 TravelAgency.selectedRow = row;
-                TravelAgency.selectedAgency = TravelAgency.agencies.get(row.children[0].innerText);
+                TravelAgency.selectedAgency = TravelAgency.agencies.get(row.getAttribute("id"));
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -96,7 +96,7 @@ export class TravelAgency{
         }
         document.getElementById("delete-agency").addEventListener('click', () => {
             if(!TravelAgency.selectedAgency){
-                alert("Please select agency first!");
+                alert("Please select agency!");
                 return;
             }
             if(confirm(`Are you sure you want to delete '${TravelAgency.selectedAgency.name}'?`)){
@@ -107,13 +107,13 @@ export class TravelAgency{
             }
         });
 
-        // document.getElementById("edit-agency").addEventListener('click', () => {
-        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        // });
+        document.getElementById("edit-agency").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        });
 
-        // document.getElementById("add-agency").addEventListener('click', () => {
-        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        // });
+        document.getElementById("add-agency").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        });
         
     }
 
@@ -157,6 +157,7 @@ export class TravelAgency{
                 <div class = "destinations">
                     ${destinations}
                 </div>
+                <a class = "back" href = "./index.html">Back</a>
             </div>
         `
     }

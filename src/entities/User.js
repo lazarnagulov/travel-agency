@@ -2,7 +2,7 @@ import { Error } from "../scripts/error.js";
 
 export class User{
     static users = new Map();
-    static headers = ["ID", "Username", "Password", "Name", "Surname", "Email", "Birth", "Address", "Phone number"];
+    static headers = ["Username", "Password", "Name", "Surname", "Email", "Birth", "Address", "Phone number"];
     
     static selectedUser;
     static selectedRow;
@@ -54,12 +54,12 @@ export class User{
             let row = tbody.insertRow()
             row.id = id;
 
-            let cell = row.insertCell();
-            let text = document.createTextNode(id);
-            cell.appendChild(text);
+            // let cell = row.insertCell();
+            // let text = document.createTextNode(id);
+            // cell.appendChild(text);
            
-            cell = row.insertCell();
-            text = document.createTextNode(user.username);
+            let cell = row.insertCell();
+            let text = document.createTextNode(user.username);
             cell.appendChild(text)
 
             cell = row.insertCell();
@@ -93,7 +93,7 @@ export class User{
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
                 User.selectedRow = row;
-                User.selectedUser = User.users.get(row.children[0].innerText);
+                User.selectedUser = User.users.get(row.getAttribute("id"));
                 for(let r of table.rows){
                     if(r != row){
                         r.style.backgroundColor = "";
@@ -104,7 +104,7 @@ export class User{
 
         document.getElementById("delete-user").addEventListener('click', () => {
             if(!User.selectedUser){
-                alert("Please select user first!");
+                alert("Please select user!");
                 return;
             }
             if(confirm(`Are you sure you want to delete '${User.selectedUser.username}'?`)){
