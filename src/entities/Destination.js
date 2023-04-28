@@ -1,3 +1,5 @@
+import { Error } from "../scripts/error.js";
+
 export class Destination
 {
     static destinationsGroup = new Map();
@@ -25,6 +27,7 @@ export class Destination
 
     static removeDestination(id){
         if(!Destination.destinations.has(id)){
+            window.location.replace(`./error.html?msg=${Error.AGENCY_NOT_FOUND.name}`);
             console.error("Destination does not exist!");
             return false;
         }
@@ -50,7 +53,7 @@ export class Destination
         let tbody = table.createTBody();
 
         for(let [id, dest] of Destination.destinations){
-            let row = tbody.insertRow()
+            let row = tbody.insertRow();
             row.id = id;
 
             let cell = row.insertCell();
@@ -86,7 +89,7 @@ export class Destination
                         r.style.backgroundColor = "";
                     }
                 }
-            })
+            });
         }
         document.getElementById("delete-destination").addEventListener('click', () => {
             if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.name}'?`)){
@@ -112,7 +115,7 @@ export class Destination
                         <strong>Transport:</strong> ${this.typeOfTransport} <br>
                         <strong>Price:</strong> ${this.price} <br>
                         <strong>Travelers:</strong> ${this.maxTravelers} <br>
-                        <a href = "#">Edit destination</a>
+                        <a href = "./error.html?msg=${Error.NOT_IMPLEMENTED.name}">Edit destination</a>
                     </p>
                 </div>
                 <br>
@@ -128,6 +131,7 @@ export class Destination
         const group = this.destinationsGroup.get(groupId);
         let ret = "";
         if(!group){
+            window.location.replace(`./error.html?msg=${Error.DESTINATION_NOT_FOUND.name}`);
             console.error("Group does not exist!");
             return;
         }

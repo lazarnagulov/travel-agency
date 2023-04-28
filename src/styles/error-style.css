@@ -1,0 +1,40 @@
+#error-msg{
+    display:flex;
+    flex-direction: column;
+}
+
+#error-msg p{
+    font-size: 3rem;
+    text-align: center;
+}
+
+#error-msg img{
+    height: 25%;
+    width: 25%;
+    margin: auto;
+}
+
+#options{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#options a{
+    margin: 1rem auto;
+    padding: 2rem;
+    background-color: #333;
+    font-size: 1.5rem;
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    width: fit-content;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    #error-msg img{
+        height: 50%;
+        width: 50%;
+    }
+}

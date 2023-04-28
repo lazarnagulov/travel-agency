@@ -24,6 +24,7 @@ export class User{
 
     static removeUser(id){
         if(!User.users.has(id)){
+            window.location.replace(`./error.html?msg=${Error.USER_NOT_FOUND.name}`);
             console.error("User does not exist!");
             return false;
         }

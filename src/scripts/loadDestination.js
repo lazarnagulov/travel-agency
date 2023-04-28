@@ -1,16 +1,14 @@
 import { Destination } from "../entities/Destination.js";
+import { Error } from "../scripts/error.js"
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 
 export function loadDestination(){
-    console.log(Destination.destinations);
-    console.log(id);
     const destination = Destination.destinations.get(id); 
-
-    console.log(destination);
-
+    
     if(!destination){
+        window.location.replace(`./error.html?msg=${Error.DESTINATION_NOT_FOUND.name}`);
         console.error("Destination does not exist!");
     }
     else{

@@ -1,7 +1,6 @@
 import { Destination  } from "./Destination.js";
 
-export class TravelAgency
-{
+export class TravelAgency{
     static agencies = new Map();
     static headers = ["ID", "Name", "Address", "Year", "Phone number", "Email", "Destination"]
 
@@ -26,6 +25,7 @@ export class TravelAgency
 
     static removeAgency(id){
         if(!TravelAgency.agencies.has(id)){
+            window.location.replace(`./error.html?msg=${Error.AGENCY_NOT_FOUND.name}`);
             console.error("Agency does not exist!");
             return false;
         }
