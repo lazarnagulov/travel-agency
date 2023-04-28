@@ -93,7 +93,7 @@ header h1{
     .navbar-links ul li {
         text-align: center;
         position: relative;
-        top: -90%;
+        top: -137%;
         z-index: 1;
         background: linear-gradient(to right, #00b4db, #0083b0);
     }
