@@ -1,5 +1,5 @@
 .popup-login{
-    position: absolute;
+    position: fixed;
     display: none;
     top: 50%;
     left: 50%;

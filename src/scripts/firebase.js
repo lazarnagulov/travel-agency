@@ -31,7 +31,7 @@ function createAgencies(agenciesData){
                 agency.email,
                 agency.destinacije  
             )
-        )
+        );
     }
     if(agenciesContainer){
         TravelAgency.createCards();
@@ -57,7 +57,7 @@ function createDestinations(destinationsData){
                 destination.prevoz,
                 destination.cena,
                 destination.maxOsoba
-            )
+            );
             if(!Destination.destinationsGroup.has(groupId)){
                 Destination.destinationsGroup.set(groupId, [id]);
             }
@@ -101,7 +101,7 @@ function createUsers(usersData){
 
 async function fetchData(){
     try{
-        let response = await fetch(firebaseURL + '/agencjie.json');
+        let response = await fetch(firebaseURL + '/agencije.json');
         const agenciesData = await response.json();
 
         response = await fetch(firebaseURL + '/destinacije.json');
@@ -114,7 +114,7 @@ async function fetchData(){
         createAgencies(agenciesData);
         createUsers(usersData);
     }catch{
-        // window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
+        window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
     }
     
 }

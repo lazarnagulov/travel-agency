@@ -125,12 +125,11 @@ export class TravelAgency{
                 <div class="agency"> 
                     <img src="${agency.logo}" alt="${agency.name + ".jpg"}" referrerpolicy="no-referrer">
                     <h3>${agency.name}</h3>
+                    <a href="./agency.html?id=${agency.id}" class="btn" id = ${agency.id}>More info</a><br><br>
                     <strong>Destinations:</strong>
                     <span class = "card-destinations">${Destination.getDestinationsFromGroup(agency.destinations)}</span>
-                    <a href="./agency.html?id=${agency.id}" class="btn" id = ${agency.id}>More info</a>
                 </div>
             `
-            localStorage.setItem(`${agency.name}`, `${agency.id}`);   
             if(agenciesContainer){ 
                 agenciesContainer.innerHTML += card;
             }
