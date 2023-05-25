@@ -1,17 +1,23 @@
-.destinations{
+#destinations{
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 1rem;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 1rem;    
+    gap:1rem;
 }
 
-.destinations a:hover{
-    letter-spacing: 1px;
-    transform: scale(1.03);
+.destination-card{
+    display: flex;
+    color: black;
+    justify-content: space-evenly;
+    flex-direction: column;
+    text-decoration: none;
 }
+
+.destination-card p{
+    padding: 0.5rem;
+}
+
 
 #destination-info{
     display: none;

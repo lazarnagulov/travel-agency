@@ -136,9 +136,10 @@ export class TravelAgency{
         }
     }
 
+
     createAgencyInfo(){
         const info = document.getElementById("agency-info");
-        const destinations = Destination.getDestinationsFromGroup(this.destinations);
+        const destinations = Destination.destinationsGroup.get(this.destinations);
         info.style.display = "flex";
         info.className = "bg-color";
         info.innerHTML = 
@@ -153,12 +154,11 @@ export class TravelAgency{
                     <strong>Email:</strong> ${this.email} <br>
                     <strong>Destinations:</strong> <br>
                 </p>
-                <div class = "destinations">
-                    ${destinations}
+                <div id = "destinations">
                 </div>
                 <a class = "back" href = "./index.html">Back</a>
             </div>
         `
+        Destination.createDestinationCards(destinations);
     }
-
 }

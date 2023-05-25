@@ -1,5 +1,6 @@
 import { Error } from "../scripts/error.js";
 
+
 export class Destination
 {
     static destinationsGroup = new Map();
@@ -111,6 +112,22 @@ export class Destination
         document.getElementById("add-destination").addEventListener('click', () => {
             window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
         });
+    }
+
+    static createDestinationCards(agencyDestinations){
+        const destinationContainer = document.getElementById("destinations");
+        for (let d of agencyDestinations){
+            let card =
+            `
+                <div class = "destination-card">
+                    <img src = "${Destination.destinations.get(d).photos[0]}" >
+                    <p title>${Destination.destinations.get(d).description.slice(0,70) + "..."}</p>
+                    <a href = ./destination.html?id=${Destination.destinations.get(d).id}>${Destination.destinations.get(d).name}</a>                    
+                </div>
+            `
+            destinationContainer.innerHTML += card;
+        }
+
     }
 
     createDestinationInfo(){

@@ -114,7 +114,7 @@ async function fetchData(){
         createAgencies(agenciesData);
         createUsers(usersData);
     }catch{
-        window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
+        // window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
     }
     
 }
