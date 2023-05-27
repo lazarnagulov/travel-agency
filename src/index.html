@@ -34,14 +34,32 @@
                 </div>
               </nav>
         </header>
+        <div class = "main-background">
+            <h2>Welcome to Travel Agencies!</h2>
+            <p>
+                Discover the world with us and embark on unforgettable adventures. 
+                Whether you're a seasoned traveler or new to exploring, we're here to make your journey extraordinary. 
+                Our dedicated team of travel experts is passionate about crafting exceptional experiences tailored to your unique interests and 
+                preferences.
+            </p>
+        </div>
         <main>
+            <section class = "search">
+                <img id = "search-img" src="./img/search.png" alt="search.png">
+                <div class = "search-options" id = "search-options">
+                    <input type="text" id = "search-agency" placeholder="Agency" name = "agency">
+                    <input type="text" id = "search-destination" placeholder="Destination" name = "destination">
+                    <button id = "search-btn">Confirm</button>
+                    <button id = "search-reset">Reset</button>
+                </div>
+            </section>
             <div class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
                     <label for="username"><strong>Username:</strong></label> <br>
-                    <input id = "l-username" type="text" name="username" id=""> <br>
+                    <input id = "l-username" type="text" name="username" > <br>
                     <label for="password"><strong>Password:</strong></label> <br>
-                    <input id = "l-password" type="password" name="password" id=""> <br> <br>
+                    <input id = "l-password" type="password" name="password" > <br> <br>
                     <input type="submit">
                 </form>
             </div>
@@ -49,21 +67,21 @@
                 <form action="#">
                     <h2>Register</h2> <br>
                     <label for="username"><strong>Username:</strong></label> 
-                    <input id = "username" type="text" name="username" id=""> <br> <br>
+                    <input id = "username" type="text" name="username"> <br> <br>
                     <label for="password"><strong>Password:</strong></label> 
-                    <input id = "password" type="text" name="password" id=""> <br> <br>
+                    <input id = "password" type="text" name="password"> <br> <br>
                     <label for="name"><strong>Name:</strong></label> 
-                    <input id = "name" type="text" name="name" id=""> <br> <br>
+                    <input id = "name" type="text" name="name" > <br> <br>
                     <label for="surname"><strong>Surname:</strong></label>
-                    <input id = "surname" type="text" name="surname" id=""> <br> <br>
+                    <input id = "surname" type="text" name="surname" > <br> <br>
                     <label for="email"><strong>Email:</strong></label>
-                    <input id = "email" type="email" name="email" id=""> <br> <br>
+                    <input id = "email" type="email" name="email" > <br> <br>
                     <label for="date"><strong>Birth date:</strong></label>
-                    <input id = "date" type="date" name="date" id=""> <br> <br>
+                    <input id = "date" type="date" name="date" > <br> <br>
                     <label for="address"><strong>Address:</strong></label>
-                    <input id = "address" type="text" name="address" id=""> <br> <br>
+                    <input id = "address" type="text" name="address" > <br> <br>
                     <label for="phonenumber"><strong>Phone number:</strong></label>
-                    <input id = "phonenumber" type="number" name="phonenumber" id=""> <br> <br>
+                    <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
                     <div class="login-btns">
                         <button><p>Register</p></button>
                     </div>
@@ -79,5 +97,6 @@
         <script src="./scripts/toggleButton.js"></script>
         <script src="./scripts/popups.js"></script>
         <script type="module" src="./scripts/firebase.js"></script>
+        <script type="module" src="./scripts/search.js"></script>
     </body>
 </html>

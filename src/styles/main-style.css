@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 body{
     height: 100vh;
     position: absolute;
@@ -15,9 +16,59 @@ header{
     height: 5%;
 }
 
+.main-background{
+    height: 40%;
+    max-width: 100%;
+    background-image: url(../img/backgroud.png);
+}
+
+.main-background h2{
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.main-background p{
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+.search{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-options{
+    display: none;
+    flex-direction: row;
+    text-align: center;
+    gap: 0.5rem;
+    margin: auto;
+}
+
+.search-options{
+    padding-bottom: 1rem;
+} 
+
+.search button{
+    margin: auto;
+    padding: 0.5rem;
+    width: fit-content;
+}
+
+.search img{
+    height: 64px;
+    width: 64px;
+    margin: auto;
+}
+
 main{
     height: fit-content;
-    min-height: 90%;
+    min-height: 50%;
     width: 100%;
     background-color: rgb(236, 244, 124);
 }
@@ -36,3 +87,8 @@ footer p{
     font-size: 1.2rem;
 }
 
+@media screen and (max-width: 600px) {
+    .search-options{
+        flex-direction: column;
+    }   
+}

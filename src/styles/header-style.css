@@ -49,7 +49,7 @@ header h1{
     justify-content: center;
     text-decoration: none;
     color: white;
-    padding: .5rem;
+    padding: .7rem;
 }
 
 .navbar-links li:hover {
@@ -103,7 +103,8 @@ header h1{
     .navbar-links ul li {
         text-align: center;
         position: relative;
-        top: -100%;
+        width: 100%;
+        top: 70%;
         z-index: 1;
         background: linear-gradient(to right, #00b4db, #0083b0);
     }

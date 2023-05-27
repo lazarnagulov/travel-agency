@@ -28,7 +28,6 @@ export class Destination
 
     static removeDestination(id){
         if(!Destination.destinations.has(id)){
-            window.location.replace(`./error.html?msg=${Error.AGENCY_NOT_FOUND.name}`);
             console.error("Destination does not exist!");
             return false;
         }
@@ -57,10 +56,6 @@ export class Destination
             let row = tbody.insertRow();
             row.id = id;
 
-            // let cell = row.insertCell();
-            // let text = document.createTextNode(id);
-            // cell.appendChild(text);
-            
             let cell = row.insertCell();
             let text = document.createTextNode(dest.name);
             cell.appendChild(text);
@@ -117,15 +112,21 @@ export class Destination
     static createDestinationCards(agencyDestinations){
         const destinationContainer = document.getElementById("destinations");
         for (let d of agencyDestinations){
+            let currentDestination = Destination.destinations.get(d); 
             let card =
             `
-                <div class = "destination-card">
-                    <img src = "${Destination.destinations.get(d).photos[0]}" >
-                    <p title>${Destination.destinations.get(d).description.slice(0,70) + "..."}</p>
-                    <a href = ./destination.html?id=${Destination.destinations.get(d).id}>${Destination.destinations.get(d).name}</a>                    
+                <div class = "destination-card" id = ${d}>
+                    <img src = "${currentDestination.photos[0]}" >
+                    <p><strong>${currentDestination.name}<br></strong><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
                 </div>
             `
             destinationContainer.innerHTML += card;
+        }
+        for(let d of agencyDestinations){
+            let currentDestination = Destination.destinations.get(d); 
+            document.getElementById(d).addEventListener('click', () => {
+                window.location.replace(`./destination.html?id=${currentDestination.id}`);
+            })
         }
 
     }

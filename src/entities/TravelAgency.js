@@ -3,7 +3,7 @@ import { Error } from "../scripts/error.js";
 
 export class TravelAgency{
     static agencies = new Map();
-    static headers = ["Name", "Address", "Year", "Phone number", "Email", "Destination"]
+    static headers = ["Name", "Address", "Year", "Phone number", "Email"]
 
     static selectedAgency;
     static selectedRow;
@@ -55,10 +55,6 @@ export class TravelAgency{
             let row = tbody.insertRow()
             row.id = id;
 
-            // let cell = row.insertCell();
-            // let text = document.createTextNode(id);
-            // cell.appendChild(text);
-        
             let cell = row.insertCell();
             let text = document.createTextNode(agency.name);
             cell.appendChild(text);
@@ -79,10 +75,6 @@ export class TravelAgency{
             text = document.createTextNode(agency.email);
             cell.appendChild(text);
 
-            cell = row.insertCell();
-            text = document.createTextNode(agency.destinations);
-            cell.appendChild(text);
-            
             row.addEventListener('click', () => {
                 row.style.backgroundColor = "aqua";
                 TravelAgency.selectedRow = row;
@@ -122,7 +114,7 @@ export class TravelAgency{
         for(let [_, agency] of TravelAgency.agencies){
             let card = 
             `
-                <div class="agency"> 
+                <div class="agency" id = "card${agency.id}"> 
                     <img src="${agency.logo}" alt="${agency.name + ".jpg"}" referrerpolicy="no-referrer">
                     <h3>${agency.name}</h3>
                     <a href="./agency.html?id=${agency.id}" class="btn" id = ${agency.id}>More info</a><br><br>
@@ -154,11 +146,18 @@ export class TravelAgency{
                     <strong>Email:</strong> ${this.email} <br>
                     <strong>Destinations:</strong> <br>
                 </p>
+                
                 <div id = "destinations">
                 </div>
                 <a class = "back" href = "./index.html">Back</a>
             </div>
         `
+
+        /*TODO: Destination search
+                <section class = "search">
+                    <img src = "./img/search.png" >
+                </section>
+        */
         Destination.createDestinationCards(destinations);
     }
 }
