@@ -1,0 +1,32 @@
+.search{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-options{
+    display: none;
+    flex-direction: row;
+    text-align: center;
+    gap: 0.5rem;
+    margin: auto;
+}
+
+.search-options{
+    padding-bottom: 1rem;
+} 
+
+.search button{
+    margin: auto;
+    padding: 0.5rem;
+    width: fit-content;
+}
+
+.search img{
+    height: 64px;
+    width: 64px;
+    margin: auto;
+    cursor: pointer;
+}

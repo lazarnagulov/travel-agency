@@ -149,7 +149,6 @@ export class TravelAgency{
                 
                 <div id = "destinations">
                 </div>
-                <a class = "back" href = "./index.html">Back</a>
             </div>
         `
 

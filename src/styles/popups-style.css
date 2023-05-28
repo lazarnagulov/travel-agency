@@ -14,12 +14,38 @@
     margin: auto;
 }
 
+.popup-login button{
+    display: flex;
+    justify-content: center;
+}
+
+.popup-login input{
+    width: 100%;
+    padding: 2rem;
+}
+
 .register-width{
     width: 300px;
 }
 
 .login-width{
     width: 250px;
+}
+
+.login-error{
+    display: none;
+    color: red;
+    text-align: center;
+}
+
+.popup-btn{
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
 }
 
 .popup-login form input{

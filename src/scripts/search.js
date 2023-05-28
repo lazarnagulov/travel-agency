@@ -4,20 +4,21 @@ import { TravelAgency } from "../entities/TravelAgency.js";
 const searchImg = document.getElementById("search-img");
 const searchOptions = document.getElementById("search-options");
 const searchButton = document.getElementById("search-btn");
-const searchReset = document.getElementById("search-reset");
 
 const agencyTextbox = document.getElementById("search-agency");
 const destinationTextbox = document.getElementById("search-destination");
 
 searchImg.addEventListener('click', () => {
+    agencyTextbox.value = "";
+    destinationTextbox.value = "";
     searchOptions.style.display = searchOptions.style.display == "none" || searchOptions.style.display == "" ? "flex" : "none"; 
+    if(searchOptions.style.display == "none"){
+        for(let [_, value] of TravelAgency.agencies){
+            document.getElementById("card" + value.id).style.display = "";
+        }
+    }
 });
 
-searchReset.addEventListener('click', () => {
-    for(let [_, value] of TravelAgency.agencies){
-        document.getElementById("card" + value.id).style.display = "";
-    }
-})
 
 searchButton.addEventListener('click', () => {
     const agency = agencyTextbox.value;
@@ -28,7 +29,9 @@ searchButton.addEventListener('click', () => {
             let agencyName = value.name.toLowerCase();
             if(!agencyName.includes(agency.toLowerCase())){
                 document.getElementById("card" + value.id).style.display = "none";
-            }        
+            }else{
+                document.getElementById("card" + value.id).style.display = "";
+            }
         }
     }
 
@@ -45,6 +48,8 @@ searchButton.addEventListener('click', () => {
             }
             if(!found){
                 document.getElementById("card" + value.id).style.display = "none";
+            }else{
+                document.getElementById("card" + value.id).style.display = "";
             }
         }
     }

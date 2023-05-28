@@ -3,11 +3,13 @@ const loginButton = document.getElementById("login-btn");
 const popupRegister = document.getElementById("register-form");
 const registerButton = document.getElementById("register-btn");
 
-
 loginButton.addEventListener("click", () => {
     if(popupRegister.style.display == "flex")
         popupRegister.style.display = "none";
     popupLogin.style.display = popupLogin.style.display == "none" || popupLogin.style.display == "" ? "flex" : "none"; 
+    if(popupLogin.style.display == "flex"){
+        document.getElementById("login-error").style.display = "none";
+    }
 });
 
 registerButton.addEventListener("click", () => {

@@ -116,8 +116,9 @@ export class Destination
             let card =
             `
                 <div class = "destination-card" id = ${d}>
+                    <p><strong>${currentDestination.name}</strong></p>
                     <img src = "${currentDestination.photos[0]}" >
-                    <p><strong>${currentDestination.name}<br></strong><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
+                    <p><br><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
                 </div>
             `
             destinationContainer.innerHTML += card;

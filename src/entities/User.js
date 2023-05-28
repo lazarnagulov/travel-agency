@@ -54,10 +54,6 @@ export class User{
             let row = tbody.insertRow()
             row.id = id;
 
-            // let cell = row.insertCell();
-            // let text = document.createTextNode(id);
-            // cell.appendChild(text);
-           
             let cell = row.insertCell();
             let text = document.createTextNode(user.username);
             cell.appendChild(text)
@@ -123,8 +119,5 @@ export class User{
         });
     }
 
-    static registerUser(username, password, name, surname, email, birthDate, address, phoneNumber){
-
-    }
 
 }

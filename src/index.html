@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles/agancy-style.css">
     <link rel="stylesheet" href="styles/popups-style.css">
     <link rel="stylesheet" href="styles/destination-style.css">
+    <link rel="stylesheet" href="styles/search-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agencies</title>
 </head>
@@ -28,8 +29,8 @@
                   <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="./admin.html">Admin</a></li>
-                    <li id = "login-btn"><a href="#">Login</a></li>
-                    <li id = "register-btn"><a href="#">Register</a></li>
+                    <li id = "login-btn"><a>Login</a></li>
+                    <li id = "register-btn"><a>Register</a></li>
                   </ul>
                 </div>
               </nav>
@@ -50,20 +51,20 @@
                     <input type="text" id = "search-agency" placeholder="Agency" name = "agency">
                     <input type="text" id = "search-destination" placeholder="Destination" name = "destination">
                     <button id = "search-btn">Confirm</button>
-                    <button id = "search-reset">Reset</button>
                 </div>
             </section>
-            <div class="popup-login login-width" id="login-form">
+            <section class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
                     <label for="username"><strong>Username:</strong></label> <br>
                     <input id = "l-username" type="text" name="username" > <br>
                     <label for="password"><strong>Password:</strong></label> <br>
                     <input id = "l-password" type="password" name="password" > <br> <br>
-                    <input type="submit">
+                    <p id = "login-error" class="login-error">Error message</p><br>
+                    <button type = "button" id = "login-user" class = "popup-btn">Login</button>
                 </form>
-            </div>
-            <div class="popup-login register-width" id="register-form">
+            </section>
+            <section class="popup-login register-width" id="register-form">
                 <form action="#">
                     <h2>Register</h2> <br>
                     <label for="username"><strong>Username:</strong></label> 
@@ -82,11 +83,10 @@
                     <input id = "address" type="text" name="address" > <br> <br>
                     <label for="phonenumber"><strong>Phone number:</strong></label>
                     <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
-                    <div class="login-btns">
-                        <button><p>Register</p></button>
-                    </div>
+                    <p id = "register-error" class="login-error">Error message</p><br>
+                    <button type = "button" id = "register-user" class="popup-btn">Register</button>
                 </form>
-            </div>
+            </section>
             <section class="agencies-list">
                 <div class="grid-container" id="agencies-container"></div>
             </section>
@@ -98,5 +98,6 @@
         <script src="./scripts/popups.js"></script>
         <script type="module" src="./scripts/firebase.js"></script>
         <script type="module" src="./scripts/search.js"></script>
+        <script type="module" src = "./scripts/validator.js"></script>
     </body>
 </html>

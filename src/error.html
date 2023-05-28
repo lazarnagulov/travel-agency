@@ -34,40 +34,40 @@
               </nav>
         </header>
         <main>
-            <div class="popup-login login-width" id="login-form">
+            <section class="popup-login login-width" id="login-form">
                 <form action="#">
                     <h2>Login</h2> <br>
                     <label for="username"><strong>Username:</strong></label> <br>
-                    <input id = "l-username" type="text" name="username" id=""> <br>
+                    <input id = "l-username" type="text" name="username" > <br>
                     <label for="password"><strong>Password:</strong></label> <br>
-                    <input id = "l-password" type="password" name="password" id=""> <br> <br>
-                    <input type="submit">
+                    <input id = "l-password" type="password" name="password" > <br> <br>
+                    <p id = "login-error" class="login-error">Error message</p><br>
+                    <button type = "button" id = "login-user" class = "popup-btn">Login</button>
                 </form>
-            </div>
-            <div class="popup-login register-width" id="register-form">
+            </section>
+            <section class="popup-login register-width" id="register-form">
                 <form action="#">
                     <h2>Register</h2> <br>
                     <label for="username"><strong>Username:</strong></label> 
-                    <input id = "username" type="text" name="username" id=""> <br> <br>
+                    <input id = "username" type="text" name="username"> <br> <br>
                     <label for="password"><strong>Password:</strong></label> 
-                    <input id = "password" type="text" name="password" id=""> <br> <br>
+                    <input id = "password" type="text" name="password"> <br> <br>
                     <label for="name"><strong>Name:</strong></label> 
-                    <input id = "name" type="text" name="name" id=""> <br> <br>
+                    <input id = "name" type="text" name="name" > <br> <br>
                     <label for="surname"><strong>Surname:</strong></label>
-                    <input id = "surname" type="text" name="surname" id=""> <br> <br>
+                    <input id = "surname" type="text" name="surname" > <br> <br>
                     <label for="email"><strong>Email:</strong></label>
-                    <input id = "email" type="email" name="email" id=""> <br> <br>
+                    <input id = "email" type="email" name="email" > <br> <br>
                     <label for="date"><strong>Birth date:</strong></label>
-                    <input id = "date" type="date" name="date" id=""> <br> <br>
+                    <input id = "date" type="date" name="date" > <br> <br>
                     <label for="address"><strong>Address:</strong></label>
-                    <input id = "address" type="text" name="address" id=""> <br> <br>
+                    <input id = "address" type="text" name="address" > <br> <br>
                     <label for="phonenumber"><strong>Phone number:</strong></label>
-                    <input id = "phonenumber" type="number" name="phonenumber" id=""> <br> <br>
-                    <div class="login-btns">
-                        <button><p>Register</p></button>
-                    </div>
+                    <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
+                    <p id = "register-error" class="login-error">Error message</p><br>
+                    <button type = "button" id = "register-user" class="popup-btn">Register</button>
                 </form>
-            </div>
+            </section>
             <br> <br>
             <section id = "error-msg">
                 <img src="./img/error.png" alt="error.png">
@@ -86,5 +86,6 @@
         <script src="./scripts/toggleButton.js"></script>
         <script src="./scripts/popups.js"></script>
         <script type="module" src="./scripts/loadError.js"></script>
+        <script type="module" src="./scripts/validator.js"></script>
     </body>
 </html>
