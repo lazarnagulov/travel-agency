@@ -16,8 +16,8 @@
 }
 
 .title-logo img{
-    max-height: 90px;
-    max-width: 90px;
+    max-height: 80px;
+    max-width: 80px;
 }
 
 header h1{
@@ -104,13 +104,14 @@ header h1{
         text-align: center;
         position: relative;
         width: 100%;
-        top: 70%;
-        z-index: 1;
+        top: 90%;
+        min-height: 3rem;
+        z-index: 2;
         background: linear-gradient(to right, #00b4db, #0083b0);
     }
 
     .navbar-links ul li a {
-        padding: 1rem 1rem;
+        padding: 1rem;
     }
 
     .navbar-links.active {

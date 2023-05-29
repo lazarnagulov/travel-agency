@@ -110,12 +110,16 @@ export class User{
                 }
             }
         });
-        document.getElementById("edit-user").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        });
+        // document.getElementById("edit-user").addEventListener('click', () => {
+        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        // });
 
         document.getElementById("add-user").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+            const popupRegister = document.getElementById("register-form");
+            const loginButton = document.getElementById("login-btn");
+            if(popupLogin.style.display == "flex")
+                popupLogin.style.display = "none";
+            popupRegister.style.display = popupRegister.style.display == "none" || popupRegister.style.display == "" ? "flex" : "none";
         });
     }
 

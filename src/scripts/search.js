@@ -24,6 +24,8 @@ searchButton.addEventListener('click', () => {
     const agency = agencyTextbox.value;
     const destination = destinationTextbox.value;
 
+    const agenciesFound = [];
+
     if(agency){
         for(let [_, value] of TravelAgency.agencies){
             let agencyName = value.name.toLowerCase();
@@ -31,27 +33,38 @@ searchButton.addEventListener('click', () => {
                 document.getElementById("card" + value.id).style.display = "none";
             }else{
                 document.getElementById("card" + value.id).style.display = "";
+                agenciesFound.push(value);
             }
         }
     }
 
     if(destination){
-        for(let [_, value] of TravelAgency.agencies){
-            let found = false;
-            let destinationGroup = value.destinations;
-            for(let d in Destination.destinationsGroup.get(destinationGroup)){
-                let destinationName = Destination.destinations.get(Destination.destinationsGroup.get(destinationGroup)[d]).name.toLowerCase();
-                if(destinationName.includes(destination.toLowerCase())){
-                    found = true;
-                    break;
-                }
+        if(!agency){
+            for(let [_, value] of TravelAgency.agencies){
+                let destinationGroup = value.destinations;
+                findDestination(destination, destinationGroup, value);           
             }
-            if(!found){
-                document.getElementById("card" + value.id).style.display = "none";
-            }else{
-                document.getElementById("card" + value.id).style.display = "";
+        }else{
+            for(let agency in agenciesFound){
+                let destinationGroup = agency.destinations;
+                findDestination(destination, destinationGroup, agency);
             }
         }
     }
-
 });
+
+function findDestination(destination, destinationGroup, value){
+    let found = false;
+    for(let d in Destination.destinationsGroup.get(destinationGroup)){
+        let destinationName = Destination.destinations.get(Destination.destinationsGroup.get(destinationGroup)[d]).name.toLowerCase();
+        if(destinationName.includes(destination.toLowerCase())){
+            found = true;
+            break;
+        }
+    }
+    if(!found){
+        document.getElementById("card" + value.id).style.display = "none";
+    }else{
+        document.getElementById("card" + value.id).style.display = "";
+    }
+}

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/popups-style.css">
     <link rel="stylesheet" href="styles/table-style.css">
     <link rel="stylesheet" href="styles/destination-style.css">
+    <link rel="stylesheet" href="styles/forms-style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Agencies</title>
 </head>
@@ -67,7 +68,31 @@
                     <label for="phonenumber"><strong>Phone number:</strong></label>
                     <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
                     <p id = "register-error" class="login-error">Error message</p><br>
-                    <button type = "button" id = "register-user" class="popup-btn">Register</button>
+                    <div class = "form-btns">
+                        <button type = "button" id = "register-user" class="popup-btn">Register</button>
+                        <button type = "button" id = "exit-register" class = "popup-btn">Exit</button>
+                    </div>
+                </form>
+            </section>
+            <section class = "edit-user" id = "e-user">
+                <form action="#">
+                    <h2>Edit user</h2>
+                    <label for="e-usernmae"><strong>Username:</strong></label>
+                    <input type="text" id = "e-username" name = "username"><br>
+                    <label for="e-password"><strong>Password:</strong></label>
+                    <input type="text" id = "e-password" name = "password"><br>
+                    <label for="e-name"><strong>Name:</strong></label>
+                    <input type="text" id = "e-name" name = "name"> <br>
+                    <label for="e-surname"><strong>Surname:</strong></label>
+                    <input type="text" id = "e-surname" name = "surname"> <br>
+                    <label for="e-email"><strong>Email:</strong></label>
+                    <input type="text" id = "e-email" name = "email"> <br>
+                    <label for="e-birth"><strong>Birth:</strong></label>
+                    <input type="date" id = "e-birth" name = "birth"> <br>
+                    <label for="e-address"><strong>Address:</strong></label>
+                    <input type="text" id = "e-address" name = "address"> <br> <br>
+                    <button type="button" id = "edit-user-confirm">Confirm</button>
+                    <button type="button" class = "exit-btn" id = "exit-edit-user">Exit</button>
                 </form>
             </section>
             <h2 class="table-title">Users</h2>
@@ -112,5 +137,6 @@
         <script src="./scripts/popups.js"></script>
         <script type="module" src="./scripts/firebase.js"></script>
         <script type="module" src = "./scripts/validator.js"></script>
+        <script type="module" src = "./scripts/editEntities.js"></script>
     </body>
 </html>

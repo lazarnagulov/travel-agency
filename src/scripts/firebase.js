@@ -100,23 +100,27 @@ function createUsers(usersData){
 }
 
 async function fetchData(){
+    let agenciesData = null;
+    let destinationsData = null;
+    let usersData = null;
+    
     try{
         let response = await fetch(firebaseURL + '/agencije.json');
-        const agenciesData = await response.json();
+        agenciesData = await response.json();
 
         response = await fetch(firebaseURL + '/destinacije.json');
-        const destinationsData = await response.json();
+        destinationsData = await response.json();
 
         response = await fetch(firebaseURL + '/korisnici.json');
-        const usersData = await response.json();
-        
-        createDestinations(destinationsData);
-        createAgencies(agenciesData);
-        createUsers(usersData);
+        usersData = await response.json();
     }catch{
-        // window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
-    }
+        window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
+        return;
+    }    
+    createDestinations(destinationsData);
+    createAgencies(agenciesData);
+    createUsers(usersData);
     
 }
 
-fetchData();
+window.addEventListener("load", fetchData);

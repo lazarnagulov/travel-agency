@@ -19,11 +19,6 @@
     justify-content: center;
 }
 
-.popup-login input{
-    width: 100%;
-    padding: 2rem;
-}
-
 .register-width{
     width: 300px;
 }
@@ -49,7 +44,11 @@
 }
 
 .popup-login form input{
-    padding: 0.25rem;
+    float: right;
+}
+
+.popup-login form input[type = "date"]{
+    width: 54%;
 }
 
 .popup-login form{
@@ -60,8 +59,13 @@
     padding-top: 2rem;
 }
 
-.popup-login form input[type="submit"]{
+.form-btns{
     display: flex;
-    padding: 0.5rem;
-    margin: auto;
+    justify-content: space-around;
+}
+
+@media screen and (max-height: 800px){
+    .popup-login{
+        top: 65%;
+    }
 }

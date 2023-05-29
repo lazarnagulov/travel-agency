@@ -2,6 +2,20 @@ const popupLogin = document.getElementById("login-form");
 const loginButton = document.getElementById("login-btn");
 const popupRegister = document.getElementById("register-form");
 const registerButton = document.getElementById("register-btn");
+const exitRegisterButton = document.getElementById("exit-register");
+
+
+exitRegisterButton.addEventListener("click", () => {
+    popupRegister.style.display = "none";
+    
+    document.getElementById("username").value = "";
+    document.getElementById("password").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("surname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("address").value = "";
+});
+
 
 loginButton.addEventListener("click", () => {
     if(popupRegister.style.display == "flex")

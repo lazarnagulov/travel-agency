@@ -26,15 +26,13 @@ header{
     text-align: center;
     font-size: 2.5rem;
 }
-
 .main-background p{
-    padding: 2rem;
+    padding: 1rem 2rem;
+    text-align: center;
     font-size: 1.2rem;
     color: white;
     text-shadow: 2px 2px black;
 }
-
-
 
 
 main{
@@ -62,4 +60,10 @@ footer p{
     .search-options{
         flex-direction: column;
     }   
+}
+
+@media screen and (min-width: 768px) {
+    .main-background p{
+        font-size: 1.5rem;
+    }
 }

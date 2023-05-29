@@ -99,13 +99,13 @@ export class TravelAgency{
             }
         });
 
-        document.getElementById("edit-agency").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        });
+        // document.getElementById("edit-agency").addEventListener('click', () => {
+        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        // });
 
-        document.getElementById("add-agency").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        });
+        // document.getElementById("add-agency").addEventListener('click', () => {
+        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        // });
         
     }
 
@@ -127,7 +127,6 @@ export class TravelAgency{
             }
         }
     }
-
 
     createAgencyInfo(){
         const info = document.getElementById("agency-info");
