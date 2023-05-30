@@ -15,9 +15,13 @@
     display: flex;
 }
 
+.title-logo h1{
+    text-align: center;
+}
+
 .title-logo img{
-    max-height: 80px;
-    max-width: 80px;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 header h1{
@@ -104,7 +108,7 @@ header h1{
         text-align: center;
         position: relative;
         width: 100%;
-        top: 90%;
+        top: 60%;
         min-height: 3rem;
         z-index: 2;
         background: linear-gradient(to right, #00b4db, #0083b0);

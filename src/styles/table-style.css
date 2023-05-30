@@ -52,6 +52,6 @@ main{
 
 @media screen and (min-width: 1440px) {
     .table-overflow{
-        overflow-x: none;
+        overflow-x: hidden;
     }
 }

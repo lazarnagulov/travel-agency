@@ -99,9 +99,9 @@ export class TravelAgency{
             }
         });
 
-        // document.getElementById("edit-agency").addEventListener('click', () => {
-        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        // });
+        document.getElementById("edit-agency").addEventListener('click', () => {
+            window.location.replace(`./editAgency.html?id=${TravelAgency.selectedAgency.id}`);
+        });
 
         // document.getElementById("add-agency").addEventListener('click', () => {
         //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);

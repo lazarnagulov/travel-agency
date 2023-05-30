@@ -115,8 +115,8 @@ export class Destination
             let currentDestination = Destination.destinations.get(d); 
             let card =
             `
-                <div class = "destination-card" id = ${d}>
-                    <p><strong>${currentDestination.name}</strong></p>
+                <div class = "destination-card white-bg" id = ${d}>
+                    <h3>${currentDestination.name}</h3>
                     <img src = "${currentDestination.photos[0]}" >
                     <p><br><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
                 </div>
@@ -125,9 +125,15 @@ export class Destination
         }
         for(let d of agencyDestinations){
             let currentDestination = Destination.destinations.get(d); 
-            document.getElementById(d).addEventListener('click', () => {
-                window.location.replace(`./destination.html?id=${currentDestination.id}`);
-            })
+            if(!document.getElementById("edit-destination")){
+                document.getElementById(d).addEventListener('click', () => {
+                    window.location.replace(`./destination.html?id=${currentDestination.id}`);
+                });
+            }else{
+                document.getElementById(d).addEventListener('click', () => {
+                    document.getElementById("edit-destination").style.display = "";
+                });
+            }
         }
 
     }

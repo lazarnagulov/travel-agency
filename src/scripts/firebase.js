@@ -36,7 +36,7 @@ function createAgencies(agenciesData){
     if(agenciesContainer){
         TravelAgency.createCards();
     }
-    if(agencyInfoContainer){
+    if(agencyInfoContainer || document.getElementById("edit-agency-info")){
         loadAgency();
     }
     if(agencyTable){

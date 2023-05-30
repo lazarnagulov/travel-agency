@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="./img/logo.png">
+    <link rel="stylesheet" href="styles/main-style.css">
+    <link rel="stylesheet" href="styles/header-style.css">
+    <link rel="stylesheet" href="styles/popups-style.css">
+    <link rel="stylesheet" href="styles/destination-style.css">
+    <link rel="stylesheet" href="styles/edit-agency-style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agencies</title>
+</head>
+    <body>
+        <header>
+            <nav class="navbar bg-color">
+                <div class = "title-logo">
+                    <img src="./img/logo.png" alt="logo.png">
+                    <h1>Travel Agencies</h1>
+                </div>
+                <a href="#" class="toggle-button">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+                </a>
+                <div class="navbar-links">
+                  <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./admin.html">Admin</a></li>
+                    <li id = "login-btn"><a href="#">Login</a></li>
+                    <li id = "register-btn"><a href="#">Register</a></li>
+                  </ul>
+                </div>
+              </nav>
+        </header>
+        <main>
+            <section class="popup-login login-width" id="login-form">
+                <form action="#">
+                    <h2>Login</h2> <br>
+                    <label for="username"><strong>Username:</strong></label> <br>
+                    <input id = "l-username" type="text" name="username" > <br>
+                    <label for="password"><strong>Password:</strong></label> <br>
+                    <input id = "l-password" type="password" name="password" > <br> <br>
+                    <p id = "login-error" class="login-error">Error message</p><br>
+                    <button type = "button" id = "login-user" class = "popup-btn">Login</button>
+                </form>
+            </section>
+            <section class="popup-login register-width" id="register-form">
+                <form action="#">
+                    <h2>Register</h2> <br>
+                    <label for="username"><strong>Username:</strong></label> 
+                    <input id = "username" type="text" name="username"> <br> <br>
+                    <label for="password"><strong>Password:</strong></label> 
+                    <input id = "password" type="text" name="password"> <br> <br>
+                    <label for="name"><strong>Name:</strong></label> 
+                    <input id = "name" type="text" name="name" > <br> <br>
+                    <label for="surname"><strong>Surname:</strong></label>
+                    <input id = "surname" type="text" name="surname" > <br> <br>
+                    <label for="email"><strong>Email:</strong></label>
+                    <input id = "email" type="email" name="email" > <br> <br>
+                    <label for="date"><strong>Birth date:</strong></label>
+                    <input id = "date" type="date" name="date" > <br> <br>
+                    <label for="address"><strong>Address:</strong></label>
+                    <input id = "address" type="text" name="address" > <br> <br>
+                    <label for="phonenumber"><strong>Phone number:</strong></label>
+                    <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
+                    <p id = "register-error" class="login-error">Error message</p><br>
+                    <div class = "form-btns">
+                        <button type = "button" id = "register-user" class="popup-btn">Register</button>
+                        <button type = "button" id = "exit-register" class = "popup-btn">Exit</button>
+                    </div>
+                </form>
+            </section>
+            <section id = "edit-destination">
+
+            </section>
+            <br><br>
+            <section class = "edit-agency-info" id = "edit-agency-info">
+                <form>
+                    <h2>Edit agency info</h2>
+                    <label for="e-name">Name:</label>
+                    <input type="text" id = "e-name" name = "agency-name">
+                    <label for="e-address">Address:</label>
+                    <input type="text" id = "e-address" name = "agency-address">
+                    <label for="e-year">Year:</label>
+                    <input type="text" id = "e-year" name = "agency-year">
+                    <label for="e-phonenumber">Phone number:</label>
+                    <input type="text" id = "e-phonenumber" name = "agency-phonenuber">
+                    <label for="e-email">Email:</label>
+                    <input type="text" id = "e-email" name = "agency-email">
+                </form>
+                <div id = "agency-logo">
+                    <h2>Agency logo</h2>
+                    <img id="agency-img" alt="logo.png">
+                    <input type="text" id = "e-logo" name = "agency-logo">
+                </div>
+            </section>
+            <br><br>
+            <div class = "destination-title">
+                <h2>Destinations:</h2>
+            </div>
+            <br>
+            <div id = "destinations"></div>
+            <br><br>
+        </main>
+        <footer class = "bg-color">
+            <p>&copy; Lazar Nagulov - Travel Agencies - WD 2023.</p>
+        </footer>
+        <script src="./scripts/toggleButton.js"></script>
+        <script src="./scripts/popups.js"></script>
+        <script type ="module" src="./scripts/firebase.js"></script>
+        <script type="module" src="./scripts/loadAgency.js"></script>
+        <script type="module" src="./scripts/validator.js"></script>
+    </body>
+</html>
