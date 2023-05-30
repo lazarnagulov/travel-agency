@@ -52,7 +52,7 @@
                     <label for="username"><strong>Username:</strong></label> 
                     <input id = "username" type="text" name="username"> <br> <br>
                     <label for="password"><strong>Password:</strong></label> 
-                    <input id = "password" type="text" name="password"> <br> <br>
+                    <input id = "password" type="password" name="password"> <br> <br>
                     <label for="name"><strong>Name:</strong></label> 
                     <input id = "name" type="text" name="name" > <br> <br>
                     <label for="surname"><strong>Surname:</strong></label>
@@ -73,7 +73,32 @@
                 </form>
             </section>
             <section id = "edit-destination">
-
+                <h2>Edit destination</h2>
+                <form>
+                    <label for="e-destination-name">Name: </label>
+                    <input type="text" id = "e-destination-name" name = "destination-name">
+                    <label for="e-description">Description: </label>
+                    <textarea name="description" id="e-description" cols="30" rows="10"></textarea>
+                    <label for="e-type">Type: </label>
+                    <select name="type" id="e-type">
+                        <option value="Zimovanje">Wintering</option>
+                        <option value="Letovanje">Summer Vacation</option>
+                        <option value="Gradovi Evrope">Europe cities</option>
+                    </select>
+                    <label for="e-transport">Transport: </label>
+                    <select name="transport" id="e-transport">
+                        <option value="avion">Airplane</option>
+                        <option value="autobus">Autobus</option>
+                        <option value="sopstveni">Own transport</option>
+                    </select>
+                    <label for="">Price: </label>
+                    <input type="text" id = "e-price" name = "price">
+                    <label for="">Travelers: </label>
+                    <input type="text" name="travelers" id="e-travelers">
+                    <br>
+                    <button type="button" class="popup-btn" id = "confirm-destination">Confirm</button>
+                    <button type="button" class="popup-btn" id = "exit-destination">Exit</button>
+                </form>
             </section>
             <br><br>
             <section class = "edit-agency-info" id = "edit-agency-info">
@@ -88,21 +113,23 @@
                     <label for="e-phonenumber">Phone number:</label>
                     <input type="text" id = "e-phonenumber" name = "agency-phonenuber">
                     <label for="e-email">Email:</label>
-                    <input type="text" id = "e-email" name = "agency-email">
+                    <input type="text" id = "e-email" name = "agency-email"> <br>
                 </form>
                 <div id = "agency-logo">
                     <h2>Agency logo</h2>
                     <img id="agency-img" alt="logo.png">
-                    <input type="text" id = "e-logo" name = "agency-logo">
+                    <input type="text" id = "e-logo" name = "agency-logo"> <br>
                 </div>
             </section>
+            <button type = "button" class="popup-btn confirm-btn" id = "confirm-agency">Confirm</button>
             <br><br>
             <div class = "destination-title">
                 <h2>Destinations:</h2>
             </div>
             <br>
             <div id = "destinations"></div>
-            <br><br>
+            <br>
+            <br>
         </main>
         <footer class = "bg-color">
             <p>&copy; Lazar Nagulov - Travel Agencies - WD 2023.</p>
@@ -112,5 +139,6 @@
         <script type ="module" src="./scripts/firebase.js"></script>
         <script type="module" src="./scripts/loadAgency.js"></script>
         <script type="module" src="./scripts/validator.js"></script>
+        <script type="module" src="./scripts/editEntities.js"></script>
     </body>
 </html>

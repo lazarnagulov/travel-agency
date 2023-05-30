@@ -1,4 +1,5 @@
 import { Error } from "../scripts/error.js";
+import { addUser, deleteUser } from "../scripts/firebase.js";
 
 export class User{
     static users = new Map();
@@ -104,10 +105,7 @@ export class User{
                 return;
             }
             if(confirm(`Are you sure you want to delete '${User.selectedUser.username}'?`)){
-                if(User.removeUser(User.selectedUser.id)){
-                    const rowId = User.selectedRow.getAttribute("id");
-                    document.getElementById(rowId).remove();
-                }
+                deleteUser();
             }
         });
         // document.getElementById("edit-user").addEventListener('click', () => {
@@ -121,6 +119,21 @@ export class User{
                 popupLogin.style.display = "none";
             popupRegister.style.display = popupRegister.style.display == "none" || popupRegister.style.display == "" ? "flex" : "none";
         });
+
+        document.getElementById("register-user").addEventListener('click', () => {
+            const user = new User(
+                null,
+                document.getElementById("username").value,
+                document.getElementById("password").value,
+                document.getElementById("name").value,
+                document.getElementById("surname").value,
+                document.getElementById("email").value,
+                document.getElementById("date").value,
+                document.getElementById("address").value,
+                document.getElementById("phonenumber").value,
+            );
+            addUser(user);
+        })
     }
 
 

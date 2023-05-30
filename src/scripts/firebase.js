@@ -123,4 +123,165 @@ async function fetchData(){
     
 }
 
+export async function deleteUser(){
+    try{
+        const user = User.selectedUser;
+        const response = await fetch(firebaseURL + "/korisnici/" + user.id +  ".json",{
+            method: "DELETE",
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+
+}
+
+export async function addUser(user){
+    console.log(user);
+    try{
+        const response = await fetch(firebaseURL + "/korisnici.json",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                adresa: user.address,
+                datumRodjenja: user.birthDate,
+                email: user.email,
+                ime: user.name,
+                korisnickoIme: user.username,
+                lozinka: user.password,
+                prezime: user.surname,
+                telefon: user.phoneNumber
+            })
+        });
+        const result = await response.json();
+        console.log(result);
+        // window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
+export async function updateUser(){
+    try{
+        const user = User.selectedUser;
+        const response = await fetch(firebaseURL + "/korisnici/" + user.id +  ".json",{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                adresa: user.address,
+                datumRodjenja: user.birthDate,
+                email: user.email,
+                ime: user.name,
+                korisnickoIme: user.username,
+                lozinka: user.password,
+                prezime: user.surname,
+                telefon: user.phoneNumber
+            })
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
+export async function updateAgency(){
+    try{
+        const agency = TravelAgency.selectedAgency;
+        const response = await fetch(firebaseURL + "/agencije/" + agency.id +  ".json",{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                adresa: agency.address,
+                brojTelefon: agency.phoneNumber,
+                destinacije: agency.destinations,
+                email: agency.email,
+                godina: agency.yearOfOpening,
+                logo: agency.logo,
+                naziv: agency.name
+            })
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
+export async function deleteAgency(){
+    try{
+        const agency = TravelAgency.selectedAgency;
+        const response = await fetch(firebaseURL + "/agencije/" + agency.id +  ".json",{
+            method: "DELETE",
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
+export async function updateDestination(){
+    try{
+        const destination = Destination.selectedDestination;
+        console.log(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations + "/" +  Destination.selectedDestination.id + ".json");
+        const response = await fetch(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations+ "/" + Destination.selectedDestination.id + ".json",{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                cena: destination.price,
+                maxOsoba: destination.maxTravelers,
+                naziv: destination.name,
+                opis: destination.description,
+                prevoz: destination.typeOfTransport,
+                slike: destination.photos,
+                tip: destination.type
+            })
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
+export async function addDestination(destination){
+    try{
+        const response = await fetch(firebaseURL + "/destinacije.json",{
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                cena: destination.price,
+                maxOsoba: destination.maxTravelers,
+                naziv: destination.name,
+                opis: destination.description,
+                prevoz: destination.typeOfTransport,
+                slike: destination.photos,
+                tip: destination.type
+            })
+        });
+        const result = await response.json();
+        console.log(result);
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
 window.addEventListener("load", fetchData);

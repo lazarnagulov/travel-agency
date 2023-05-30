@@ -131,7 +131,15 @@ export class Destination
                 });
             }else{
                 document.getElementById(d).addEventListener('click', () => {
-                    document.getElementById("edit-destination").style.display = "";
+                    let dest = Destination.destinations.get(d);
+                    Destination.selectedDestination = dest;
+                    document.getElementById("edit-destination").style.display = "flex";
+                    document.getElementById("e-destination-name").value = dest.name;
+                    document.getElementById("e-description").value = dest.description;
+                    document.getElementById("e-type").value = dest.type;
+                    document.getElementById("e-transport").value = dest.typeOfTransport;
+                    document.getElementById("e-price").value = dest.price;
+                    document.getElementById("e-travelers").value = dest.maxTravelers;
                 });
             }
         }
