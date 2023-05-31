@@ -1,10 +1,19 @@
 .edit-agency-info form{
     display: flex;
     flex-direction: column;
+    max-height: fit-content;
     background-color: white;
     border-radius: 10px;
     padding: 2rem;
     border: 1px solid black;
+}
+
+.edit-agency-info form h2{
+    padding-bottom: 1rem;
+}
+
+main{
+    height: 90%;
 }
 
 .edit-agency-info form input{
@@ -56,19 +65,25 @@ main{
 }
 
 .edit-agency-info{
-    height: 100%;
-    width: 75%;
+    min-height: 100%;
+    height: fit-content;
+    background-image: url("../img/backgroud.png");
+}
+
+.destination-grid-container{
     display: grid;
     margin: auto;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
     place-items: center;
     gap: 1rem;
 }
 
-
 .edit-agency-info #agency-logo{
     display: flex;
+    min-width: 50%;
+    height: 90%;
     flex-direction: column;
     background-color: white;
     border-radius: 10px;

@@ -114,7 +114,7 @@ async function fetchData(){
         response = await fetch(firebaseURL + '/korisnici.json');
         usersData = await response.json();
     }catch{
-        window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
+        // window.location.replace(`./error.html?msg=${Error.DATABASE_ERROR.name}`);
         return;
     }    
     createDestinations(destinationsData);
@@ -159,7 +159,7 @@ export async function addUser(user){
         });
         const result = await response.json();
         console.log(result);
-        // window.location.reload();
+        window.location.reload();
     }catch(e){
         console.error("Error:" + e);
     }

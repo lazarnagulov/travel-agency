@@ -7,6 +7,7 @@ const editUser = document.getElementById('e-user');
 const editUserButton = document.getElementById("edit-user");
 
 const confirmUser = document.getElementById("confirm-user");
+const exitUser = document.getElementById("exit-edit-user")
 
 const confirmDestination = document.getElementById("confirm-destination");
 const exitDestination = document.getElementById("exit-destination");
@@ -42,7 +43,11 @@ if(editUserButton){
         user.phoneNumber = document.getElementById("e-phonenumber").value;
 
         updateUser();
-    })
+    });
+
+    exitUser.addEventListener('click', () => {
+        editUser.style.display = "none";
+    });
 }
 
 if(confirmDestination){

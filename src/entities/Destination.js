@@ -7,6 +7,17 @@ export class Destination
     static destinations = new Map();
     static headers = ["Name", "Type", "Transport", "Price", "Travelers"] 
 
+    static EMPTY_CARD =
+    `
+    <div class = "destination-card new-destination white-bg">
+        <p><strong>Add destination<strong></p>
+        <br>
+        <img src = "../src/img/add.png">
+        <br>
+    </div>
+
+    `
+
     static selectedDestination;
     static selectedRow;
 
@@ -20,23 +31,6 @@ export class Destination
         this.typeOfTransport = typeOfTransport;
         this.price = price;
         this.maxTravelers = maxTravelers;
-    }
-
-    static addDestination(destination){
-        destinations.push(destination.id, destination);
-    }
-
-    static removeDestination(id){
-        if(!Destination.destinations.has(id)){
-            console.error("Destination does not exist!");
-            return false;
-        }
-        Destination.destinations.delete(id);
-        return true;
-    }
-
-    editDestination(){
-
     }
 
     static generateTable(table){
@@ -109,6 +103,7 @@ export class Destination
         });
     }
 
+
     static createDestinationCards(agencyDestinations){
         const destinationContainer = document.getElementById("destinations");
         for (let d of agencyDestinations){
@@ -116,12 +111,15 @@ export class Destination
             let card =
             `
                 <div class = "destination-card white-bg" id = ${d}>
-                    <h3>${currentDestination.name}</h3>
+                    <h4>${currentDestination.name}</h4>
                     <img src = "${currentDestination.photos[0]}" >
                     <p><br><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
                 </div>
             `
             destinationContainer.innerHTML += card;
+        }
+        if(document.getElementById("edit-destination")){
+            destinationContainer.insertAdjacentHTML('beforeend', Destination.EMPTY_CARD);
         }
         for(let d of agencyDestinations){
             let currentDestination = Destination.destinations.get(d); 
@@ -130,6 +128,7 @@ export class Destination
                     window.location.replace(`./destination.html?id=${currentDestination.id}`);
                 });
             }else{
+        
                 document.getElementById(d).addEventListener('click', () => {
                     let dest = Destination.destinations.get(d);
                     Destination.selectedDestination = dest;
@@ -143,7 +142,7 @@ export class Destination
                 });
             }
         }
-
+        
     }
 
     createDestinationInfo(){
@@ -160,7 +159,6 @@ export class Destination
                         <strong>Transport:</strong> ${this.typeOfTransport} <br>
                         <strong>Price:</strong> ${this.price} <br>
                         <strong>Travelers:</strong> ${this.maxTravelers} <br>
-                        <a href = "./error.html?msg=${Error.NOT_IMPLEMENTED.name}">Edit destination</a>
                         <a href = "./index.html">Back</a>
                     </p>
                 </div>
@@ -186,7 +184,7 @@ export class Destination
             if(!dest){
                 console.error(`Destination ${group[id]} does not exist!`);
             }
-            ret += `<a id = ${crypto.randomUUID()} href='./destination.html?id=${dest.id}' name = "${group[id]}">${dest.name}</a>`;
+            ret += `<a id = ${crypto.randomUUID()} href='./destination.html?id=${dest.id}' name = "${group[id]}"><span>${dest.name}</span></a>`;
         }
         return ret;
     }

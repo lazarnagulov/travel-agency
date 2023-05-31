@@ -11,18 +11,21 @@ const destinationTextbox = document.getElementById("search-destination");
 searchImg.addEventListener('click', () => {
     agencyTextbox.value = "";
     destinationTextbox.value = "";
+    if(searchOptions.style.display == "flex")    
+        TravelAgency.createCards();
     searchOptions.style.display = searchOptions.style.display == "none" || searchOptions.style.display == "" ? "flex" : "none"; 
-    if(searchOptions.style.display == "none"){
-        for(let [_, value] of TravelAgency.agencies){
-            document.getElementById("card" + value.id).style.display = "";
-        }
-    }
 });
 
 
 searchButton.addEventListener('click', () => {
+    TravelAgency.createCards();
+    
     const agency = agencyTextbox.value;
     const destination = destinationTextbox.value;
+
+
+    const agencyRegex = new RegExp(`(${agency.toLowerCase()})(?!([^<]+)?>)`, "gi");
+    const destinationRegex = new RegExp(`(${destination.toLowerCase()})(?!([^<]+)?>)`, "gi");
 
     const agenciesFound = [];
 
@@ -34,6 +37,18 @@ searchButton.addEventListener('click', () => {
             }else{
                 document.getElementById("card" + value.id).style.display = "";
                 agenciesFound.push(value);
+                for(let child of document.getElementById("card" + value.id).children){
+                    let text = child.innerHTML;
+                    let checker = text.slice().toLowerCase();
+                    if(text.includes("Destinations:") || text.includes("More info") ){
+                        continue;
+                    }
+                    if(checker.includes(agency.toLowerCase())){
+                        let a = agency.toUpperCase();
+                        let replaced = text.replace(agencyRegex, `<mark>${a}</mark>`);
+                        child.innerHTML = replaced;
+                    }
+                }
             }
         }
     }
@@ -42,12 +57,41 @@ searchButton.addEventListener('click', () => {
         if(!agency){
             for(let [_, value] of TravelAgency.agencies){
                 let destinationGroup = value.destinations;
-                findDestination(destination, destinationGroup, value);           
+                let foundDestination = findDestination(destination, destinationGroup, value);
+                if(foundDestination){
+                    for(let child of document.getElementById(foundDestination).children){
+                        let text = child.innerHTML;
+                        let checker = text.slice().toLowerCase();
+                        if(text.includes("Destinations:") || text.includes("More info") ){
+                            continue;
+                        }
+                        if(checker.includes(destination.toLowerCase())){
+                            let d = destination.toUpperCase();
+                            let replaced = text.replace(destinationRegex, `<mark>${d}</mark>`);
+                            child.innerHTML = replaced;
+                        }
+                    }                   
+                }
+
             }
         }else{
-            for(let agency in agenciesFound){
-                let destinationGroup = agency.destinations;
-                findDestination(destination, destinationGroup, agency);
+            for(let a in agenciesFound){
+                let destinationGroup = agenciesFound[a].destinations;
+                let foundDestination = findDestination(destination, destinationGroup, agenciesFound[a]);
+                if(foundDestination){
+                    for(let child of document.getElementById(foundDestination).children){
+                        let text = child.innerHTML;
+                        let checker = text.slice().toLowerCase();
+                        if(text.includes("Destinations:") || text.includes("More info") ){
+                            continue;
+                        }
+                        if(checker.includes(destination.toLowerCase())){
+                            let d = destination.toUpperCase();
+                            let replaced = text.replace(destinationRegex, `<mark style>${d}</mark>`);
+                            child.innerHTML = replaced;
+                        }
+                    }                   
+                }
             }
         }
     }
@@ -64,7 +108,14 @@ function findDestination(destination, destinationGroup, value){
     }
     if(!found){
         document.getElementById("card" + value.id).style.display = "none";
+        return null;
     }else{
         document.getElementById("card" + value.id).style.display = "";
+        return "card" + value.id;
+        // for(let child of card.children){
+        //     if (child.innerText != "Destinations:" && child.innerText != "More info"){
+        //         child.innerText.replace()
+        //     }
+        // }
     }
 }

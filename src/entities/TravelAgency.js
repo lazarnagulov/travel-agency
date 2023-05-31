@@ -20,24 +20,6 @@ export class TravelAgency{
         this.destinations = destinations;
     }
 
-    static addAgency(agency){
-        agencies.push(agency.id, agency);
-    }
-
-    static removeAgency(id){
-        if(!TravelAgency.agencies.has(id)){
-            window.location.replace(`./error.html?msg=${Error.AGENCY_NOT_FOUND.name}`);
-            console.error("Agency does not exist!");
-            return false;
-        }
-        TravelAgency.agencies.delete(id);
-        return true;
-    }
-
-    editAgency(){
-
-    }
-
     static generateTable(table){
         let thead = table.createTHead();
         let row = thead.insertRow();
@@ -103,14 +85,18 @@ export class TravelAgency{
             window.location.replace(`./editAgency.html?id=${TravelAgency.selectedAgency.id}`);
         });
 
-        // document.getElementById("add-agency").addEventListener('click', () => {
-        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        // });
+        document.getElementById("add-agency").addEventListener('click', () => {
+            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
+        });
         
     }
 
     static createCards(){
         const agenciesContainer = document.getElementById("agencies-container");
+        agenciesContainer.innerHTML = "";
+        if(!agenciesContainer){
+            return;
+        }
         for(let [_, agency] of TravelAgency.agencies){
             let card = 
             `
@@ -119,12 +105,10 @@ export class TravelAgency{
                     <h3>${agency.name}</h3>
                     <a href="./agency.html?id=${agency.id}" class="btn" id = ${agency.id}>More info</a><br><br>
                     <strong>Destinations:</strong>
-                    <span class = "card-destinations">${Destination.getDestinationsFromGroup(agency.destinations)}</span>
+                    <div class = "card-destinations">${Destination.getDestinationsFromGroup(agency.destinations)}</div>
                 </div>
             `
-            if(agenciesContainer){ 
-                agenciesContainer.innerHTML += card;
-            }
+            agenciesContainer.innerHTML += card;
         }
     }
 

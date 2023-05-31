@@ -22,6 +22,27 @@ main{
     text-decoration: none;
 }
 
+
+.new-destination p{
+    text-align: center;
+    margin: auto;
+    font-size: 1rem;
+}
+
+.new-destination img{
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+
+.destination-card h4{
+    margin: auto;
+    padding-bottom: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 .destination-card:hover{
     cursor: pointer;
     box-shadow: 0 10px 15px rgba(0,0,0,.3);
