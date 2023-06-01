@@ -2,6 +2,7 @@ import { User } from "../entities/User.js";
 import { Destination } from "../entities/Destination.js";
 import { addDestination, updateAgency, updateDestination, updateUser } from "../scripts/firebase.js";
 import { TravelAgency } from "../entities/TravelAgency.js";
+import { validateAgency, validateDestination, validateUser } from "./validator.js";
 
 const editUser = document.getElementById('e-user');
 const editUserButton = document.getElementById("edit-user");
@@ -17,6 +18,8 @@ const exitAddDestination = document.getElementById("exit-add-destination");
 
 
 const confirmAgency = document.getElementById("confirm-agency");
+
+
 
 if(editUserButton){
     editUserButton.addEventListener('click', () => {
@@ -48,6 +51,10 @@ if(editUserButton){
         const user = User.selectedUser;
         editUser.style.display = "none";
 
+        if(!validateUser()){
+            return;
+        }
+
         user.username = document.getElementById("e-username").value;
         user.password = document.getElementById("e-password").value;
         user.name = document.getElementById("e-name").value;
@@ -69,6 +76,9 @@ if(editUserButton){
 if(confirmDestination){
     confirmDestination.addEventListener('click', () => {
         const dest = Destination.selectedDestination;
+        if(!validateDestination("edit")){
+            return;
+        }
         document.getElementById("edit-destination").style.display = "none";
         dest.name = document.getElementById("e-destination-name").value;
         dest.description = document.getElementById("e-description").value;
@@ -76,7 +86,6 @@ if(confirmDestination){
         dest.typeOfTransport = document.getElementById("e-transport").value;
         dest.price = document.getElementById("e-price").value;
         dest.maxTravelers = document.getElementById("e-travelers").value;
-        
         updateDestination();
     });
 
@@ -85,6 +94,10 @@ if(confirmDestination){
     })
 
     confirmAddDestination.addEventListener('click', () => {
+    
+        if(!validateDestination("add")){
+            return;
+        }
         let dest = new Destination(
             null,
             document.getElementById("a-destination-name").value,
@@ -98,8 +111,8 @@ if(confirmDestination){
         document.getElementById("add-destination").style.display = "none";
 
         addDestination(dest);
-
-    })
+    
+    });
 
     exitDestination.addEventListener('click', () => {
         document.getElementById("edit-destination").style.display = "none";
@@ -107,6 +120,9 @@ if(confirmDestination){
 
     confirmAgency.addEventListener('click', () => {
         const agency = TravelAgency.selectedAgency;
+        if(!validateAgency()){
+            return;
+        }
         agency.name = document.getElementById("e-name").value;
         agency.address = document.getElementById("e-address").value;
         agency.yearOfOpening = document.getElementById("e-year").value;

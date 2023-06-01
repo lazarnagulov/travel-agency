@@ -175,10 +175,7 @@ export class TravelAgency{
                         </form>
                     </section>    
                 </p>
-                
-
-                <div id = "destinations">
-                </div>
+                <div id = "destinations"></div>
             </div>
         `
         document.getElementById("search-img").addEventListener('click', () => {

@@ -6,9 +6,105 @@ import { addUser } from "./firebase.js";
 const registerUser = document.getElementById("register-user");
 const loginUser = document.getElementById("login-user");
 const loginError = document.getElementById("login-error");
+const errorColor = "rgb(231, 68, 68)";
+
+export function validateAgency(){
+    const name = document.getElementById("e-name").value;
+    const address = document.getElementById("e-address").value;
+    const yearOfOpening = document.getElementById("e-year").value;
+    const phoneNumber = document.getElementById("e-phonenumber").value;
+    const email = document.getElementById("e-email").value;
+    const logo = document.getElementById("e-logo").value;
+
+    let validated = true;
+
+    if(!name){
+        document.getElementById("e-name").style.color = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-name").style.color = "";
+    }
+    if(!address){
+        document.getElementById("e-address").style.color = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-address").style.color = "";
+    }
 
 
-registerUser.addEventListener('click', () => {
+    return validated;
+}
+
+export function validateDestination(option){
+    if(option == "add"){
+        option = "a"
+    }
+    else if(option == "edit"){
+        option = "e"
+    }else{
+        return;
+    }
+
+    const name = document.getElementById(`${option}-destination-name`).value;
+    const description = document.getElementById(`${option}-description`).value;
+    let img = null;
+    if(option == "a"){
+        img = document.getElementById(`${option}-img`).value;
+    }
+    const price = document.getElementById(`${option}-price`).value;
+    const travelers = document.getElementById(`${option}-travelers`).value;
+    const transport = document.getElementById(`${option}-transport`).value;
+    const type = document.getElementById(`${option}-type`).value;
+
+    let validated = true;
+    if(!name){
+        document.getElementById(`${option}-destination-name`).style.backgroundColor = errorColor,
+        validated = false;
+    }else{
+        document.getElementById(`${option}-destination-name`).style.backgroundColor = "";
+    }
+    if(!description){
+        document.getElementById(`${option}-description`).style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById(`${option}-description`).style.backgroundColor = "";
+    }
+    if(option == "a"){
+        if(!img){
+            document.getElementById(`${option}-img`).style.backgroundColor = errorColor;
+            validated = false;
+        }else{
+            document.getElementById(`${option}-img`).style.backgroundColor = "";
+        }
+    }
+    if(!transport){
+        document.getElementById(`${option}-transport`).style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById(`${option}-transport`).style.backgroundColor = "";
+    }
+    if(!type){
+        document.getElementById(`${option}-type`).style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById(`${option}-type`).style.backgroundColor = "";
+    }
+    if(!price || !parseInt(price) || parseInt(price) <= 0){
+        document.getElementById(`${option}-price`).style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById(`${option}-price`).style.backgroundColor = "";
+    }
+    if(!travelers || !parseInt(travelers) || parseInt(travelers) <= 0){
+        document.getElementById(`${option}-travelers`).style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById(`${option}-travelers`).style.backgroundColor = "";
+    }
+    return validated;
+}
+
+export function validateUser(){
     const errorColor = "rgb(231, 68, 68)";
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -72,7 +168,20 @@ registerUser.addEventListener('click', () => {
     }else{
         document.getElementById("phonenumber").style.backgroundColor = "";
     }
-    if(validated){
+    return validated;
+}
+
+registerUser.addEventListener('click', () => {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const name = document.getElementById("name").value;
+    const surname = document.getElementById("surname").value;
+    const email = document.getElementById("email").value;
+    const date = document.getElementById("date").value;
+    const address = document.getElementById("address").value;
+    const phoneNumber = document.getElementById("phonenumber").value;
+
+    if(validateUser()){
         const user = new User(
             null,
             username,
@@ -85,7 +194,7 @@ registerUser.addEventListener('click', () => {
             phoneNumber
         );
 
-        addUser(user);
+        optionUser(user);
     }
 });
 
@@ -103,17 +212,17 @@ loginUser.addEventListener("click", () => {
     }
 
     if(!user){
-        loginError.style.color = "red";
+        loginError.style.backgroundColor = "red";
         loginError.style.display = "block";
         loginError.textContent = Error.USER_NOT_FOUND.name;
     }
     if(user.password != password){
-        loginError.style.color = "red";
+        loginError.style.backgroundColor = "red";
         loginError.textContent = Error.WRONG_PASSWORD.name;
         loginError.style.display = "block";
         document.getElementById("l-password").value = "";
     }
-    loginError.style.color = "green";
+    loginError.style.backgroundColor = "green";
     loginError.textContent = "Successful login!";
     loginError.style.display = "block";
 
