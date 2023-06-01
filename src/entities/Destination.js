@@ -167,7 +167,6 @@ export class Destination
                         <strong>Transport:</strong> ${this.typeOfTransport} <br>
                         <strong>Price:</strong> ${this.price} <br>
                         <strong>Travelers:</strong> ${this.maxTravelers} <br>
-                        <a href = "./index.html">Back</a>
                     </p>
                 </div>
                 <br>

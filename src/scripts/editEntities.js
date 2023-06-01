@@ -49,12 +49,11 @@ if(editUserButton){
 
     confirmUser.addEventListener('click', () => {
         const user = User.selectedUser;
-        editUser.style.display = "none";
 
         if(!validateUser()){
             return;
         }
-
+        editUser.style.display = "none";
         user.username = document.getElementById("e-username").value;
         user.password = document.getElementById("e-password").value;
         user.name = document.getElementById("e-name").value;
