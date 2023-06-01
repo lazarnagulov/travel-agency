@@ -8,6 +8,9 @@ const loginUser = document.getElementById("login-user");
 const loginError = document.getElementById("login-error");
 const errorColor = "rgb(231, 68, 68)";
 
+const emailRegex = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
+const phoneNumberRegex = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
+
 export function validateAgency(){
     const name = document.getElementById("e-name").value;
     const address = document.getElementById("e-address").value;
@@ -19,18 +22,41 @@ export function validateAgency(){
     let validated = true;
 
     if(!name){
-        document.getElementById("e-name").style.color = errorColor;
+        document.getElementById("e-name").style.backgroundColor = errorColor;
         validated = false;
     }else{
-        document.getElementById("e-name").style.color = "";
+        document.getElementById("e-name").style.backgroundColor = "";
     }
     if(!address){
-        document.getElementById("e-address").style.color = errorColor;
+        document.getElementById("e-address").style.backgroundColor = errorColor;
         validated = false;
     }else{
-        document.getElementById("e-address").style.color = "";
+        document.getElementById("e-address").style.backgroundColor = "";
     }
-
+    if(!yearOfOpening || !parseInt(yearOfOpening)){
+        document.getElementById("e-year").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-year").style.backgroundColor = "";
+    }
+    if(!phoneNumber || !parseInt(phoneNumber)){
+        document.getElementById("e-phonenumber").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-phonenumber").style.backgroundColor = "";
+    }
+    if(!email || !emailRegex.test(email)){
+        document.getElementById("e-email").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-email").style.backgroundColor = "";
+    }
+    if(!logo){
+        document.getElementById("e-logo").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-logo").style.backgroundColor = "";
+    }
 
     return validated;
 }
@@ -117,8 +143,6 @@ export function validateUser(){
 
     let validated = true;
 
-    const emailRegex = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
-    const phoneNumberRegex = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
 
     if(!username || User.usernameExists(username)){
         document.getElementById("username").style.backgroundColor = errorColor;

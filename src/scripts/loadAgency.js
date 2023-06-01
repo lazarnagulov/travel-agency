@@ -24,8 +24,6 @@ export function loadAgency(){
         document.getElementById("agency-img").src = agency.logo;
         document.getElementById("e-logo").value = agency.logo;
 
-        console.log(agency.destinations);
-
         Destination.createDestinationCards(Destination.destinationsGroup.get(agency.destinations));
     }
 }
