@@ -1,5 +1,6 @@
 import { Destination  } from "./Destination.js";
 import { Error } from "../scripts/error.js";
+import { deleteAgency } from "../scripts/firebase.js";
 
 export class TravelAgency{
     static agencies = new Map();
@@ -68,20 +69,44 @@ export class TravelAgency{
                 }
             })
         }
+
+        
+
         document.getElementById("delete-agency").addEventListener('click', () => {
+            document.getElementById("modal").style.display = "inline";
+            
             if(!TravelAgency.selectedAgency){
-                alert("Please select agency!");
+                document.getElementById("modal-confirm").innerText = "OK";
+                document.getElementById("modal-cancel").style.display = "none";
+                document.getElementById("modal-message").innerText = "Please select agency!";
+                document.getElementById("modal-confirm").addEventListener('click', () =>{
+                    document.getElementById("modal").style.display = "";
+                });       
                 return;
             }
-            if(confirm(`Are you sure you want to delete '${TravelAgency.selectedAgency.name}'?`)){
-                if(TravelAgency.removeAgency(TravelAgency.selectedAgency.id)){
-                    const rowId = TravelAgency.selectedRow.getAttribute("id");
-                    document.getElementById(rowId).remove();
-                }
-            }
+            document.getElementById("modal-confirm").innerText = "Yes";
+            document.getElementById("modal-cancel").innerText = "No";
+            document.getElementById("modal-message").innerText = `Are you sure you want to delete ${TravelAgency.selectedAgency.name}?`;
+            document.getElementById("modal-confirm").addEventListener('click', () =>{
+                deleteAgency()
+            });       
+            document.getElementById("modal-cancel").addEventListener('click', () =>{
+                document.getElementById("modal").style.display = "";
+            });       
         });
 
         document.getElementById("edit-agency").addEventListener('click', () => {
+            if(!TravelAgency.selectedAgency){
+                document.getElementById("modal").style.display = "inline";
+                document.getElementById("modal-confirm").innerText = "OK";
+                document.getElementById("modal-cancel").style.display = "none";
+                document.getElementById("modal-message").innerText = "Please select agency!";
+
+                document.getElementById("modal-confirm").addEventListener('click', () =>{
+                    document.getElementById("modal").style.display = "";
+                });       
+                return;
+            }
             window.location.replace(`./editAgency.html?id=${TravelAgency.selectedAgency.id}`);
         });
 
@@ -93,7 +118,6 @@ export class TravelAgency{
 
     static createCards(){
         const agenciesContainer = document.getElementById("agencies-container");
-        agenciesContainer.innerHTML = "";
         if(!agenciesContainer){
             return;
         }

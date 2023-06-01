@@ -23,7 +23,6 @@ searchButton.addEventListener('click', () => {
     const agency = agencyTextbox.value;
     const destination = destinationTextbox.value;
 
-
     const agencyRegex = new RegExp(`(${agency.toLowerCase()})(?!([^<]+)?>)`, "gi");
     const destinationRegex = new RegExp(`(${destination.toLowerCase()})(?!([^<]+)?>)`, "gi");
 

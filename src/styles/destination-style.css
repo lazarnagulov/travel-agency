@@ -35,6 +35,9 @@ main{
     align-items: center;
 }
 
+.new-destination{
+    min-height: 200px;
+}
 
 .destination-card h4{
     margin: auto;

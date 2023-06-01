@@ -261,7 +261,7 @@ export async function updateDestination(){
 
 export async function addDestination(destination){
     try{
-        const response = await fetch(firebaseURL + "/destinacije.json",{
+        const response = await fetch(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations + ".json",{
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -1,6 +1,6 @@
 import { User } from "../entities/User.js";
 import { Destination } from "../entities/Destination.js";
-import { updateAgency, updateDestination, updateUser } from "../scripts/firebase.js";
+import { addDestination, updateAgency, updateDestination, updateUser } from "../scripts/firebase.js";
 import { TravelAgency } from "../entities/TravelAgency.js";
 
 const editUser = document.getElementById('e-user');
@@ -12,11 +12,26 @@ const exitUser = document.getElementById("exit-edit-user")
 const confirmDestination = document.getElementById("confirm-destination");
 const exitDestination = document.getElementById("exit-destination");
 
+const confirmAddDestination = document.getElementById("confirm-add-destination");
+const exitAddDestination = document.getElementById("exit-add-destination");
+
+
 const confirmAgency = document.getElementById("confirm-agency");
 
 if(editUserButton){
     editUserButton.addEventListener('click', () => {
         const user = User.selectedUser;
+        if(!user){
+            document.getElementById("modal").style.display = "inline";
+            document.getElementById("modal-confirm").innerText = "OK";
+            document.getElementById("modal-cancel").style.display = "none";
+            document.getElementById("modal-message").innerText = "Please select user!";
+
+            document.getElementById("modal-confirm").addEventListener('click', () => {
+                document.getElementById("modal").style.display = "";
+            });       
+            return;
+        }
         editUser.style.display = "flex";
 
         document.getElementById("e-username").value = user.username;
@@ -50,6 +65,7 @@ if(editUserButton){
     });
 }
 
+
 if(confirmDestination){
     confirmDestination.addEventListener('click', () => {
         const dest = Destination.selectedDestination;
@@ -63,6 +79,27 @@ if(confirmDestination){
         
         updateDestination();
     });
+
+    exitAddDestination.addEventListener('click', () =>{
+        document.getElementById("add-destination").style.display = "none";
+    })
+
+    confirmAddDestination.addEventListener('click', () => {
+        let dest = new Destination(
+            null,
+            document.getElementById("a-destination-name").value,
+            document.getElementById("a-description").value,
+            [document.getElementById("a-img").value],
+            document.getElementById("a-type").value,
+            document.getElementById("a-transport").value,
+            document.getElementById("a-price").value,
+            document.getElementById("a-travelers").value
+        );
+        document.getElementById("add-destination").style.display = "none";
+
+        addDestination(dest);
+
+    })
 
     exitDestination.addEventListener('click', () => {
         document.getElementById("edit-destination").style.display = "none";
@@ -78,7 +115,7 @@ if(confirmDestination){
         agency.logo = document.getElementById("e-logo").value;
 
         updateAgency();
-    })
+    });
 }
 
 

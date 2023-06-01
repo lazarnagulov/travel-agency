@@ -20,24 +20,6 @@ export class User{
         this.phoneNumber = phoneNumber;
     }
 
-    static addUser(user){
-        User.users.push(destiantion.id, user);
-    }
-
-    static removeUser(id){
-        if(!User.users.has(id)){
-            window.location.replace(`./error.html?msg=${Error.USER_NOT_FOUND.name}`);
-            console.error("User does not exist!");
-            return false;
-        }
-        User.users.delete(id);
-        return true;
-    }
-
-    editUser(){
-
-    }
-
     static generateTable(table){
         let thead = table.createTHead();
         let row = thead.insertRow();
@@ -100,17 +82,27 @@ export class User{
         }
 
         document.getElementById("delete-user").addEventListener('click', () => {
+            document.getElementById("modal").style.display = "inline";
+            
             if(!User.selectedUser){
-                alert("Please select user!");
+                document.getElementById("modal-confirm").innerText = "OK";
+                document.getElementById("modal-cancel").style.display = "none";
+                document.getElementById("modal-message").innerText = "Please select user!";
+                document.getElementById("modal-confirm").addEventListener('click', () =>{
+                    document.getElementById("modal").style.display = "";
+                });       
                 return;
             }
-            if(confirm(`Are you sure you want to delete '${User.selectedUser.username}'?`)){
+            document.getElementById("modal-confirm").innerText = "Yes";
+            document.getElementById("modal-cancel").innerText = "No";
+            document.getElementById("modal-message").innerText = `Are you sure you want to delete ${User.selectedUser.username}?`;
+            document.getElementById("modal-confirm").addEventListener('click', () =>{
                 deleteUser();
-            }
+            });       
+            document.getElementById("modal-cancel").addEventListener('click', () =>{
+                document.getElementById("modal").style.display = "";
+            });      
         });
-        // document.getElementById("edit-user").addEventListener('click', () => {
-        //     window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        // });
 
         document.getElementById("add-user").addEventListener('click', () => {
             const popupRegister = document.getElementById("register-form");

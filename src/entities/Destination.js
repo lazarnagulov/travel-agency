@@ -11,11 +11,8 @@ export class Destination
     `
     <div class = "destination-card new-destination white-bg">
         <p><strong>Add destination<strong></p>
-        <br>
         <img src = "../src/img/add.png">
-        <br>
     </div>
-
     `
 
     static selectedDestination;
@@ -112,14 +109,25 @@ export class Destination
             `
                 <div class = "destination-card white-bg" id = ${d}>
                     <h4>${currentDestination.name}</h4>
-                    <img src = "${currentDestination.photos[0]}" >
+                    <img src = "${currentDestination.photos[0]}" referrerpolicy="no-referrer">
                     <p><br><strong>Type: </strong>${currentDestination.type}<br><strong>Transport: </strong>${currentDestination.typeOfTransport}<br></p>
                 </div>
             `
             destinationContainer.innerHTML += card;
         }
         if(document.getElementById("edit-destination")){
-            destinationContainer.insertAdjacentHTML('beforeend', Destination.EMPTY_CARD);
+            destinationContainer.insertAdjacentHTML('beforeend', 
+                `    
+                    <div id = "add-destination-btn" class = "destination-card new-destination white-bg">
+                        <img src = "../src/img/add.png">
+                    </div>
+                `
+            );
+
+            document.getElementById("add-destination-btn").addEventListener('click', () => {
+                document.getElementById("add-destination").style.display = "flex";
+
+            });
         }
         for(let d of agencyDestinations){
             let currentDestination = Destination.destinations.get(d); 

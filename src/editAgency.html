@@ -72,7 +72,7 @@
                     </div>
                 </form>
             </section>
-            <section id = "edit-destination">
+            <section id = "edit-destination" class = "edit-destination">
                 <h2>Edit destination</h2>
                 <form>
                     <label for="e-destination-name">Name: </label>
@@ -91,13 +91,45 @@
                         <option value="autobus">Autobus</option>
                         <option value="sopstveni">Own transport</option>
                     </select>
-                    <label for="">Price: </label>
+                    <label for="e-price">Price: </label>
                     <input type="text" id = "e-price" name = "price">
-                    <label for="">Travelers: </label>
+                    <label for="e-travelers">Travelers: </label>
                     <input type="text" name="travelers" id="e-travelers">
                     <br>
-                    <button type="button" class="popup-btn" id = "confirm-destination">Confirm</button>
+                    <button type="button" class="popup-btn" id = "confirm-destination">Create</button>
                     <button type="button" class="popup-btn" id = "exit-destination">Exit</button>
+                </form>
+            </section>
+            <section id = "add-destination" class = "edit-destination">
+                <h2>Add destination</h2>
+                <form>
+                    <label for="a-destination-name">Name: </label>
+                    <input type="text" id = "a-destination-name" name = "destination-name">
+                    <label for="a-description">Description: </label>
+                    <textarea name="description" id="a-description" cols="30" rows="10"></textarea>
+                    <label for="a-type">Type: </label>
+                    <select name="type" id="a-type">
+                        <option value="">-- Types --</option>
+                        <option value="Zimovanje">Wintering</option>
+                        <option value="Letovanje">Summer Vacation</option>
+                        <option value="Gradovi Evrope">Europe cities</option>
+                    </select>
+                    <label for="a-transport">Transport: </label>
+                    <select name="transport" id="a-transport">
+                        <option value="">-- Transport --</option>
+                        <option value="avion">Airplane</option>
+                        <option value="autobus">Autobus</option>
+                        <option value="sopstveni">Own transport</option>
+                    </select>
+                    <label for="a-price">Price: </label>
+                    <input type="text" id = "a-price" name = "price">
+                    <label for="a-travelers">Travelers: </label>
+                    <input type="text" name="travelers" id="a-travelers">
+                    <label for="a-img">Image: </label>
+                    <input type="text" id = "a-img" name = "destination-img">
+                    <br>
+                    <button type="button" class="popup-btn" id = "confirm-add-destination">Confirm</button>
+                    <button type="button" class="popup-btn" id = "exit-add-destination">Exit</button>
                 </form>
             </section>
             <section class = "edit-agency-info" id = "edit-agency-info">

@@ -8,6 +8,7 @@
     border: 1px solid black;
 }
 
+
 .edit-agency-info form h2{
     padding-bottom: 1rem;
 }
@@ -20,7 +21,7 @@ main{
     width: 100%;
 }
 
-#edit-destination{
+.edit-destination{
     display: none;
     flex-direction: column;
     z-index: 10;
@@ -34,11 +35,11 @@ main{
     padding: 2rem;
 }
 
-#edit-destination form label{
+.edit-destination form label{
     padding: .5rem;
 }
 
-#edit-destination form{
+.edit-destination form{
     display: flex;
     flex-direction: column;
 }
