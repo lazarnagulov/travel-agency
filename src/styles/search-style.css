@@ -8,15 +8,13 @@
 
 .search-options{
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
     gap: 0.5rem;
     margin: auto;
+    padding-bottom: 1rem;
 }
 
-.search-options{
-    padding-bottom: 1rem;
-} 
 
 .search button{
     margin: auto;
@@ -25,8 +23,8 @@
 }
 
 .search img{
-    height: 64px;
-    width: 64px;
+    height: auto;
+    max-width: 64px;
     margin: auto;
     cursor: pointer;
 }

@@ -20,6 +20,15 @@ export class User{
         this.phoneNumber = phoneNumber;
     }
 
+    static usernameExists(username){
+        for(let [_, user] of User.users){
+            if(user.username == username){
+                return true;
+            }
+        }
+        return false;
+    }
+
     static generateTable(table){
         let thead = table.createTHead();
         let row = thead.insertRow();
@@ -105,28 +114,20 @@ export class User{
         });
 
         document.getElementById("add-user").addEventListener('click', () => {
+            document.getElementById("username").style.backgroundColor = "";
+            document.getElementById("password").style.backgroundColor = "";
+            document.getElementById("name").style.backgroundColor = "";
+            document.getElementById("surname").style.backgroundColor = "";
+            document.getElementById("email").style.backgroundColor = "";
+            document.getElementById("date").style.backgroundColor = "";
+            document.getElementById("address").style.backgroundColor = "";
+            document.getElementById("phonenumber").style.backgroundColor = "";
+
             const popupRegister = document.getElementById("register-form");
-            const loginButton = document.getElementById("login-btn");
             if(popupLogin.style.display == "flex")
                 popupLogin.style.display = "none";
             popupRegister.style.display = popupRegister.style.display == "none" || popupRegister.style.display == "" ? "flex" : "none";
         });
 
-        document.getElementById("register-user").addEventListener('click', () => {
-            const user = new User(
-                null,
-                document.getElementById("username").value,
-                document.getElementById("password").value,
-                document.getElementById("name").value,
-                document.getElementById("surname").value,
-                document.getElementById("email").value,
-                document.getElementById("date").value,
-                document.getElementById("address").value,
-                document.getElementById("phonenumber").value,
-            );
-            addUser(user);
-        })
     }
-
-
 }

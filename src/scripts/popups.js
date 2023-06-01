@@ -8,6 +8,14 @@ const exitRegisterButton = document.getElementById("exit-register");
 exitRegisterButton.addEventListener("click", () => {
     popupRegister.style.display = "none";
     
+    document.getElementById("username").style.backgroundColor = "";
+    document.getElementById("password").style.backgroundColor = "";
+    document.getElementById("name").style.backgroundColor = "";
+    document.getElementById("surname").style.backgroundColor = "";
+    document.getElementById("email").style.backgroundColor = "";
+    document.getElementById("date").style.backgroundColor = "";
+    document.getElementById("address").style.backgroundColor = "";
+    document.getElementById("phonenumber").style.backgroundColor = "";
     document.getElementById("username").value = "";
     document.getElementById("password").value = "";
     document.getElementById("name").value = "";

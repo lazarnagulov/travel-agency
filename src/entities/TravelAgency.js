@@ -118,6 +118,7 @@ export class TravelAgency{
 
     static createCards(){
         const agenciesContainer = document.getElementById("agencies-container");
+        agenciesContainer.innerHTML = "";
         if(!agenciesContainer){
             return;
         }
@@ -152,17 +153,39 @@ export class TravelAgency{
                     <strong>Phone number:</strong> ${this.phoneNumber} <br>   
                     <strong>Email:</strong> ${this.email} <br>
                     <strong>Destinations:</strong> <br>
+                    <section class = "search">
+                        <img id = "search-img" src = "./img/search.png" >
+                        <form class = "search-options" id = "search-options">
+                            <input placeholder = "Name" type = "text" id = "dest-name">
+                            <label for="search-transport">Transport:</label>
+                            <select name="transport" id="search-transport">
+                                <option value=""></option>
+                                <option value="avion">Airplane</option>
+                                <option value="autobus">Autobus</option>
+                                <option value="sopstveni">Own transport</option>
+                            </select>
+                            <label for="search-type">Type:</label>
+                            <select name="type" id="search-type">
+                                <option value=""></option>
+                                <option value="Zimovanje">Wintering</option>
+                                <option value="Letovanje">Summer Vacation</option>
+                                <option value="Gradovi Evrope">Europe cities</option>
+                            </select>
+                            <button type = "button" class = "popup-btn" id = "search-btn">Confirm</button>
+                        </form>
+                    </section>    
                 </p>
                 
+
                 <div id = "destinations">
                 </div>
             </div>
         `
-
+        document.getElementById("search-img").addEventListener('click', () => {
+            const searchOptions = document.getElementById("search-options"); 
+            searchOptions.style.display = searchOptions.style.display == "none" || searchOptions.style.display == "" ? "flex" : "none"; 
+        });
         /*TODO: Destination search
-                <section class = "search">
-                    <img src = "./img/search.png" >
-                </section>
         */
         Destination.createDestinationCards(destinations);
     }
