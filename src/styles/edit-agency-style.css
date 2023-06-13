@@ -91,6 +91,7 @@ main{
     padding: 1rem;
     border: 1px solid black;
 }
+
 .edit-agency-info #agency-logo input{
     width: 50%;
     margin: auto;
@@ -106,4 +107,8 @@ main{
     height: 75%;
     width: 75%;
     margin: auto;
+}
+
+.new-destination:hover{
+    cursor: pointer;
 }

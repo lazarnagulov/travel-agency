@@ -85,6 +85,7 @@ if(confirmDestination){
         dest.typeOfTransport = document.getElementById("e-transport").value;
         dest.price = document.getElementById("e-price").value;
         dest.maxTravelers = document.getElementById("e-travelers").value;
+        dest.photos[0] = document.getElementById("e-photo").value;
         updateDestination();
     });
 

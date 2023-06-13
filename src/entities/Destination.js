@@ -101,6 +101,7 @@ export class Destination
                     document.getElementById("e-transport").value = dest.typeOfTransport;
                     document.getElementById("e-price").value = dest.price;
                     document.getElementById("e-travelers").value = dest.maxTravelers;
+                    document.getElementById("e-photo").value = dest.photos[0];
                 });
             }
         }

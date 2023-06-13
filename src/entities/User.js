@@ -102,6 +102,7 @@ export class User{
                 });       
                 return;
             }
+            document.getElementById("modal-cancel").style.display = "flex";
             document.getElementById("modal-confirm").innerText = "Yes";
             document.getElementById("modal-cancel").innerText = "No";
             document.getElementById("modal-message").innerText = `Are you sure you want to delete ${User.selectedUser.username}?`;

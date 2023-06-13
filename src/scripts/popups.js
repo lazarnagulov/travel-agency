@@ -3,7 +3,17 @@ const loginButton = document.getElementById("login-btn");
 const popupRegister = document.getElementById("register-form");
 const registerButton = document.getElementById("register-btn");
 const exitRegisterButton = document.getElementById("exit-register");
+const exitLoginButton = document.getElementById("exit-login");
 
+
+exitLoginButton.addEventListener("click", () => {
+    popupLogin.style.display = "none";
+
+    document.getElementById("l-username").style.backgroundColor = "";
+    document.getElementById("l-username").value = "";
+    document.getElementById("l-password").style.backgroundColor = "";
+    document.getElementById("l-password").value = "";
+});
 
 exitRegisterButton.addEventListener("click", () => {
     popupRegister.style.display = "none";
@@ -23,6 +33,8 @@ exitRegisterButton.addEventListener("click", () => {
     document.getElementById("email").value = "";
     document.getElementById("address").value = "";
 });
+
+
 
 
 loginButton.addEventListener("click", () => {

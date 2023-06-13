@@ -9,7 +9,6 @@ const loginError = document.getElementById("login-error");
 const errorColor = "rgb(231, 68, 68)";
 
 const emailRegex = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
-const phoneNumberRegex = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
 
 export function validateAgency(){
     const name = document.getElementById("e-name").value;
@@ -18,6 +17,8 @@ export function validateAgency(){
     const phoneNumber = document.getElementById("e-phonenumber").value;
     const email = document.getElementById("e-email").value;
     const logo = document.getElementById("e-logo").value;
+
+    const phoneNumberRegex = new RegExp("[0-9]+/[0-9]+-[0-9]+");
 
     let validated = true;
 
@@ -39,7 +40,7 @@ export function validateAgency(){
     }else{
         document.getElementById("e-year").style.backgroundColor = "";
     }
-    if(!phoneNumber || !parseInt(phoneNumber)){
+    if(!phoneNumber || !phoneNumberRegex.test(phoneNumber)){
         document.getElementById("e-phonenumber").style.backgroundColor = errorColor;
         validated = false;
     }else{
@@ -140,6 +141,7 @@ export function validateEditUser(){
     const address = document.getElementById("e-address").value;
     const phoneNumber = document.getElementById("e-phonenumber").value;
 
+
     let validated = true;
 
     if(!username || (username != User.selectedUser.username && User.usernameExists(username))){
@@ -184,7 +186,7 @@ export function validateEditUser(){
     }else{
         document.getElementById("e-address").style.backgroundColor = "";
     }
-    if(!phoneNumber || !phoneNumberRegex.test(phoneNumber)){
+    if(!phoneNumber){
         document.getElementById("e-phonenumber").style.backgroundColor = errorColor;
         validated = false;
     }else{
@@ -249,7 +251,7 @@ export function validateUser(){
     }else{
         document.getElementById("address").style.backgroundColor = "";
     }
-    if(!phoneNumber || !phoneNumberRegex.test(phoneNumber)){
+    if(!phoneNumber){
         document.getElementById("phonenumber").style.backgroundColor = errorColor;
         validated = false;
     }else{

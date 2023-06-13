@@ -59,6 +59,7 @@ header h1{
 .navbar-links li:hover {
     background-color: rgb(5, 176, 182);
     height: 100%;
+    cursor: pointer;
 }
 
 .toggle-button {
@@ -103,6 +104,12 @@ header h1{
         padding: 0;
         flex-direction: column;
     }
+
+    .form-btns{
+        display: flex;
+        justify-content: space-around;
+    }
+    
 
     .navbar-links ul li {
         text-align: center;
