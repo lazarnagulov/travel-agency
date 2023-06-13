@@ -64,13 +64,20 @@
                     <label for="address"><strong>Address:</strong></label>
                     <input id = "address" type="text" name="address" > <br> <br>
                     <label for="phonenumber"><strong>Phone number:</strong></label>
-                    <input id = "phonenumber" type="number" name="phonenumber" > <br> <br>
+                    <input id = "phonenumber" type="text" name="phonenumber" > <br> <br>
                     <p id = "register-error" class="login-error">Error message</p><br>
                     <div class = "form-btns">
                         <button type = "button" id = "register-user" class="popup-btn">Register</button>
                         <button type = "button" id = "exit-register" class = "popup-btn">Exit</button>
                     </div>
                 </form>
+            </section>
+            <section id = "modal" class = "modal">
+                <p id = "modal-message">dadasdadad</p>
+                <div class = "modal-btns">
+                    <button id = "modal-confirm" class = "popup-btn" type = "button">Confirm</button>
+                    <button id = "modal-cancel" class = "popup-btn" type = "button">Cancel</button>
+                </div>
             </section>
             <section id = "edit-destination" class = "edit-destination">
                 <h2>Edit destination</h2>
@@ -143,7 +150,7 @@
                         <label for="e-year">Year:</label>
                         <input type="number" id = "e-year" name = "agency-year">
                         <label for="e-phonenumber">Phone number:</label>
-                        <input type="number" id = "e-phonenumber" name = "agency-phonenuber">
+                        <input type="text" id = "e-phonenumber" name = "agency-phonenuber">
                         <label for="e-email">Email:</label>
                         <input type="email" id = "e-email" name = "agency-email"> <br>
                     </form>

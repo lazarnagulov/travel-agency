@@ -71,9 +71,6 @@ function createDestinations(destinationsData){
     if(destinationInfoContainer){
         loadDestination();
     }
-    if(destinationTable){
-        Destination.generateTable(destinationTable);
-    }
 }
 
 
@@ -130,7 +127,6 @@ export async function deleteUser(){
             method: "DELETE",
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
@@ -139,7 +135,6 @@ export async function deleteUser(){
 }
 
 export async function addUser(user){
-    console.log(user);
     try{
         const response = await fetch(firebaseURL + "/korisnici.json",{
             method: "POST",
@@ -158,7 +153,6 @@ export async function addUser(user){
             })
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
@@ -185,7 +179,6 @@ export async function updateUser(){
             })
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
@@ -202,7 +195,7 @@ export async function updateAgency(){
             },
             body: JSON.stringify({
                 adresa: agency.address,
-                brojTelefon: agency.phoneNumber,
+                brojTelefona: agency.phoneNumber,
                 destinacije: agency.destinations,
                 email: agency.email,
                 godina: agency.yearOfOpening,
@@ -211,7 +204,6 @@ export async function updateAgency(){
             })
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
@@ -225,7 +217,6 @@ export async function deleteAgency(){
             method: "DELETE",
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
@@ -235,7 +226,6 @@ export async function deleteAgency(){
 export async function updateDestination(){
     try{
         const destination = Destination.selectedDestination;
-        console.log(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations + "/" +  Destination.selectedDestination.id + ".json");
         const response = await fetch(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations+ "/" + Destination.selectedDestination.id + ".json",{
             method: "PATCH",
             headers: {
@@ -252,12 +242,24 @@ export async function updateDestination(){
             })
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);
     }
 }
+
+export async function deleteDestination(){
+    try{
+        const response = await fetch(firebaseURL + "/destinacije/" + TravelAgency.selectedAgency.destinations+ "/" + Destination.selectedDestination.id + ".json",{
+            method: "DELETE",
+        });
+        const result = await response.json();
+        window.location.reload();
+    }catch(e){
+        console.error("Error:" + e);
+    }
+}
+
 
 export async function addDestination(destination){
     try{
@@ -277,7 +279,6 @@ export async function addDestination(destination){
             })
         });
         const result = await response.json();
-        console.log(result);
         window.location.reload();
     }catch(e){
         console.error("Error:" + e);

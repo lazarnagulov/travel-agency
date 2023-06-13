@@ -1,4 +1,5 @@
 import { Error } from "../scripts/error.js";
+import { deleteDestination } from "../scripts/firebase.js";
 
 
 export class Destination
@@ -30,76 +31,6 @@ export class Destination
         this.maxTravelers = maxTravelers;
     }
 
-    static generateTable(table){
-        let thead = table.createTHead();
-        let row = thead.insertRow();
-
-        for(let header in Destination.headers){
-            let th = document.createElement("th");
-            let text = document.createTextNode(Destination.headers[header]);
-            th.appendChild(text);
-            row.appendChild(th);
-        }
-
-        let tbody = table.createTBody();
-
-        for(let [id, dest] of Destination.destinations){
-            let row = tbody.insertRow();
-            row.id = id;
-
-            let cell = row.insertCell();
-            let text = document.createTextNode(dest.name);
-            cell.appendChild(text);
-
-            cell = row.insertCell();
-            text = document.createTextNode(dest.type);
-            cell.appendChild(text);
-
-            cell = row.insertCell();
-            text = document.createTextNode(dest.typeOfTransport);
-            cell.appendChild(text);
-
-            cell = row.insertCell();
-            text = document.createTextNode(dest.price);
-            cell.appendChild(text);
-
-            cell = row.insertCell();
-            text = document.createTextNode(dest.maxTravelers);
-            cell.appendChild(text);
-            
-            row.addEventListener('click', () => {
-                row.style.backgroundColor = "aqua";
-                Destination.selectedRow = row;
-                Destination.selectedDestination = Destination.destinations.get(row.getAttribute("id"));
-                for(let r of table.rows){
-                    if(r != row){
-                        r.style.backgroundColor = "";
-                    }
-                }
-            });
-        }
-        document.getElementById("delete-destination").addEventListener('click', () => {
-            if(!Destination.selectedDestination){
-                alert("Please select destination");
-                return;
-            }
-            if(confirm(`Are you sure you want to delete '${Destination.selectedDestination.name}'?`)){
-                if(Destination.removeDestination(Destination.selectedDestination.id)){
-                    const rowId = Destination.selectedRow.getAttribute("id");
-                    document.getElementById(rowId).remove();
-                }
-            }
-        });
-
-        document.getElementById("edit-destination").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        });
-
-        document.getElementById("add-destination").addEventListener('click', () => {
-            window.location.replace(`./error.html?msg=${Error.NOT_IMPLEMENTED.name}`);
-        });
-    }
-
 
     static createDestinationCards(agencyDestinations){
         const destinationContainer = document.getElementById("destinations");
@@ -114,6 +45,15 @@ export class Destination
                 </div>
             `
             destinationContainer.innerHTML += card;
+            if(document.getElementById("edit-destination")){
+                document.getElementById(d).insertAdjacentHTML('beforeend',
+                `
+                    <div class = "popup-btn" id = "edit-destination-${d}">Edit</div>
+                    <div class = "popup-btn" id = "delete-destination-${d}">Delete</div>
+                `
+                );
+                document.getElementById(`edit-destination-${d}`).style.marginBottom = ".5rem";
+            }
         }
         if(document.getElementById("edit-destination")){
             destinationContainer.insertAdjacentHTML('beforeend', 
@@ -126,7 +66,6 @@ export class Destination
 
             document.getElementById("add-destination-btn").addEventListener('click', () => {
                 document.getElementById("add-destination").style.display = "flex";
-
             });
         }
         for(let d of agencyDestinations){
@@ -135,9 +74,23 @@ export class Destination
                 document.getElementById(d).addEventListener('click', () => {
                     window.location.replace(`./destination.html?id=${currentDestination.id}`);
                 });
+                
             }else{
-        
-                document.getElementById(d).addEventListener('click', () => {
+                document.getElementById(`delete-destination-${d}`).addEventListener('click', () => {
+                    let dest = Destination.destinations.get(d);
+                    Destination.selectedDestination = dest;
+                    document.getElementById("modal").style.display = "inline";
+                    document.getElementById("modal-confirm").innerText = "Yes";
+                    document.getElementById("modal-cancel").innerText = "No";
+                    document.getElementById("modal-message").innerText = `Are you sure you want to delete ${Destination.selectedDestination.name}?`;
+                    document.getElementById("modal-confirm").addEventListener('click', () =>{
+                        deleteDestination();
+                    });       
+                    document.getElementById("modal-cancel").addEventListener('click', () =>{
+                        document.getElementById("modal").style.display = "";
+                    });
+                });
+                document.getElementById(`edit-destination-${d}`).addEventListener('click', () => {
                     let dest = Destination.destinations.get(d);
                     Destination.selectedDestination = dest;
                     document.getElementById("edit-destination").style.display = "flex";
