@@ -96,9 +96,13 @@ main{
     margin: auto;
 }
 
+.destination-card:hover{
+    cursor: default;
+}
 
 .edit-agency-info #agency-logo img{
     padding: 1rem;
+    max-height: 350px;
     height: 75%;
     width: 75%;
     margin: auto;

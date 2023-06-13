@@ -157,13 +157,6 @@ export class TravelAgency{
                         <img id = "search-img" src = "./img/search.png" >
                         <form class = "search-options" id = "search-options">
                             <input placeholder = "Name" type = "text" id = "dest-name">
-                            <label for="search-transport">Transport:</label>
-                            <select name="transport" id="search-transport">
-                                <option value=""></option>
-                                <option value="avion">Airplane</option>
-                                <option value="autobus">Autobus</option>
-                                <option value="sopstveni">Own transport</option>
-                            </select>
                             <label for="search-type">Type:</label>
                             <select name="type" id="search-type">
                                 <option value=""></option>
@@ -171,19 +164,124 @@ export class TravelAgency{
                                 <option value="Letovanje">Summer Vacation</option>
                                 <option value="Gradovi Evrope">Europe cities</option>
                             </select>
-                            <button type = "button" class = "popup-btn" id = "search-btn">Confirm</button>
+                            <label for="search-transport">Transport:</label>
+                            <select name="transport" id="search-transport">
+                                <option value=""></option>
+                                <option value="avion">Airplane</option>
+                                <option value="autobus">Autobus</option>
+                                <option value="sopstveni">Own transport</option>
+                            </select>
+                            <button type = "button" class = "popup-btn" id = "destination-search-btn">Search</button>
                         </form>
                     </section>    
                 </p>
                 <div id = "destinations"></div>
             </div>
         `
+        document.getElementById("destination-search-btn").addEventListener("click", () => {
+            Destination.createDestinationCards(Destination.destinationsGroup.get(TravelAgency.selectedAgency.destinations));
+
+            const destinationName = document.getElementById("dest-name").value;
+            const transport = document.getElementById("search-transport").value;
+            const type = document.getElementById("search-type").value;
+
+            const destinationNameRegex = new RegExp(`(${destinationName.toLowerCase()})(?!([^<]+)?>)`, "gi");
+            const transportRegex = new RegExp(`(${transport.toLowerCase()})(?!([^<]+)?>)`, "gi");
+            const typeRegex = new RegExp(`(${type.toLowerCase()})(?!([^<]+)?>)`, "gi");
+            const destinationGroup = Destination.destinationsGroup.get(TravelAgency.selectedAgency.destinations);
+
+            let destinationFound = [];
+
+            if(!(destinationName || transport || type)){
+                for(let id of destinationGroup){
+                    document.getElementById(id).style.display = "";
+                }
+                return;
+            }
+
+            if(destinationName){
+                for(let id of destinationGroup){
+                    let destination = Destination.destinations.get(id);
+                    let name = destination.name.toLowerCase();
+                    if(!name.includes(destinationName.toLowerCase())){
+                        document.getElementById(id).style.display = "none";
+                        continue;
+                    }
+                    document.getElementById(id).style.display = "";
+                    destinationFound.push(id);
+                }
+            }else{
+                destinationFound = destinationGroup;
+            }
+
+            let transportFound = [];
+
+            if(transport){
+                for(let id of destinationFound){
+                    let destinationTransport = Destination.destinations.get(id).typeOfTransport;
+                    if(destinationTransport.toLowerCase() != transport.toLowerCase()){
+                        document.getElementById(id).style.display = "none";
+                        continue;
+                    }
+                    document.getElementById(id).style.display = "";
+                    transportFound.push(id);
+                }
+            }else{
+                transportFound = destinationFound;
+            }
+
+            let found = [];
+
+            if(type){
+                for(let id of transportFound){
+                    let destinationType = Destination.destinations.get(id).type;
+                    if(destinationType.toLowerCase() != type.toLowerCase()){
+                        document.getElementById(id).style.display = "none";
+                        continue;
+                    }
+                    document.getElementById(id).style.display = "";
+                    found.push(id);
+                }
+            }else{
+                found = transportFound;
+            }
+
+            for(let id of found){
+                let name = document.getElementById(id).getElementsByTagName("h4")[0];
+                let text = name.innerHTML;
+                let checker = text.slice().toLowerCase();
+                if(destinationName && checker.includes(destinationName.toLowerCase())){
+                    let n = destinationName.toUpperCase();
+                    let replaced = text.replace(destinationNameRegex, `<mark>${n}</mark>`);
+                    name.innerHTML = replaced;
+                }
+                
+                let typeParagraph = document.getElementById(id).getElementsByTagName("p")[0];
+                if(type){
+                    text = typeParagraph.innerHTML;
+                    checker = text.slice().toLowerCase();
+                    if(checker.includes(type.toLowerCase())){
+                        let t = type.toUpperCase();
+                        let replaced = text.replace(typeRegex, `<mark>${t}</mark>`);
+                        typeParagraph.innerHTML = replaced;
+                    }
+                }   
+                if(transport){
+                    text = typeParagraph.innerHTML;
+                    checker = text.slice().toLowerCase();
+                    if(checker.includes(transport.toLowerCase())){
+                        let t = transport.toUpperCase();
+                        let replaced = text.replace(transportRegex, `<mark>${t}</mark>`);
+                        typeParagraph.innerHTML = replaced;
+                    }
+                }
+          }
+        });
         document.getElementById("search-img").addEventListener('click', () => {
             const searchOptions = document.getElementById("search-options"); 
             searchOptions.style.display = searchOptions.style.display == "none" || searchOptions.style.display == "" ? "flex" : "none"; 
         });
-        /*TODO: Destination search
-        */
+
         Destination.createDestinationCards(destinations);
     }
 }

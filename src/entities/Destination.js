@@ -34,6 +34,7 @@ export class Destination
 
     static createDestinationCards(agencyDestinations){
         const destinationContainer = document.getElementById("destinations");
+        destinationContainer.innerHTML = "";
         for (let d of agencyDestinations){
             let currentDestination = Destination.destinations.get(d); 
             let card =

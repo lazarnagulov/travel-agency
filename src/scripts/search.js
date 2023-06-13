@@ -15,8 +15,6 @@ if(agencyTextbox){
         searchOptions.style.display = searchOptions.style.display == "none" || searchOptions.style.display == "" ? "flex" : "none"; 
     });
 
-
-
     searchButton.addEventListener('click', () => {
         TravelAgency.createCards();
 
@@ -45,6 +43,7 @@ if(agencyTextbox){
                         if(checker.includes(agency.toLowerCase())){
                             let a = agency.toUpperCase();
                             let replaced = text.replace(agencyRegex, `<mark>${a}</mark>`);
+                            console.log(replaced);
                             child.innerHTML = replaced;
                         }
                     }
@@ -96,6 +95,7 @@ if(agencyTextbox){
         }
     });
 }
+
 function findDestination(destination, destinationGroup, value){
     let found = false;
     for(let d in Destination.destinationsGroup.get(destinationGroup)){
