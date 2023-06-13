@@ -91,6 +91,22 @@ if(confirmDestination){
 
     exitAddDestination.addEventListener('click', () =>{
         document.getElementById("add-destination").style.display = "none";
+
+        document.getElementById("a-destination-name").value = "";
+        document.getElementById("a-destination-name").style.backgroundColor = "";
+        document.getElementById("a-description").value = "";
+        document.getElementById("a-description").style.backgroundColor = "";
+        document.getElementById("a-img").value = "";
+        document.getElementById("a-img").style.backgroundColor = "";
+        document.getElementById("a-type").value = "";
+        document.getElementById("a-type").style.backgroundColor = "";
+        document.getElementById("a-transport").value = "";
+        document.getElementById("a-transport").style.backgroundColor = "";
+        document.getElementById("a-price").value = "";
+        document.getElementById("a-price").style.backgroundColor = "";
+        document.getElementById("a-travelers").value = "";
+        document.getElementById("a-travelers").style.backgroundColor = "";
+
     })
 
     confirmAddDestination.addEventListener('click', () => {
