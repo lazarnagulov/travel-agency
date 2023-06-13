@@ -43,7 +43,6 @@ if(agencyTextbox){
                         if(checker.includes(agency.toLowerCase())){
                             let a = agency.toUpperCase();
                             let replaced = text.replace(agencyRegex, `<mark>${a}</mark>`);
-                            console.log(replaced);
                             child.innerHTML = replaced;
                         }
                     }

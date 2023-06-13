@@ -2,7 +2,7 @@ import { User } from "../entities/User.js";
 import { Destination } from "../entities/Destination.js";
 import { addDestination, updateAgency, updateDestination, updateUser } from "../scripts/firebase.js";
 import { TravelAgency } from "../entities/TravelAgency.js";
-import { validateAgency, validateDestination, validateUser } from "./validator.js";
+import { validateAgency, validateDestination, validateEditUser, validateUser } from "./validator.js";
 
 const editUser = document.getElementById('e-user');
 const editUserButton = document.getElementById("edit-user");
@@ -50,7 +50,7 @@ if(editUserButton){
     confirmUser.addEventListener('click', () => {
         const user = User.selectedUser;
 
-        if(!validateUser()){
+        if(!validateEditUser()){
             return;
         }
         editUser.style.display = "none";

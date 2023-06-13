@@ -130,6 +130,70 @@ export function validateDestination(option){
     return validated;
 }
 
+export function validateEditUser(){
+    const username = document.getElementById("e-username").value;
+    const password = document.getElementById("e-password").value;
+    const name = document.getElementById("e-name").value;
+    const date = document.getElementById("e-birth").value;
+    const surname = document.getElementById("e-surname").value;
+    const email = document.getElementById("e-email").value;
+    const address = document.getElementById("e-address").value;
+    const phoneNumber = document.getElementById("e-phonenumber").value;
+
+    let validated = true;
+
+    if(!username || (username != User.selectedUser.username && User.usernameExists(username))){
+        document.getElementById("e-username").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-username").style.backgroundColor = "";
+    }
+    if(!name){
+        document.getElementById("e-name").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-name").style.backgroundColor = "";
+    }
+    if(!password){
+        document.getElementById("e-password").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-password").style.backgroundColor = "";
+    }
+    if(!surname){
+        document.getElementById("e-surname").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-surname").style.backgroundColor = "";
+    }
+    if(!(email && emailRegex.test(email))){
+        document.getElementById("e-email").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-email").style.backgroundColor = "";
+    }
+    if(!date){
+        document.getElementById("e-birth").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-birth").style.backgroundColor = "";
+    }
+    if(!address){
+        document.getElementById("e-address").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-address").style.backgroundColor = "";
+    }
+    if(!phoneNumber || !phoneNumberRegex.test(phoneNumber)){
+        document.getElementById("e-phonenumber").style.backgroundColor = errorColor;
+        validated = false;
+    }else{
+        document.getElementById("e-phonenumber").style.backgroundColor = "";
+    }
+    return validated;
+
+}
+
 export function validateUser(){
     const errorColor = "rgb(231, 68, 68)";
     const username = document.getElementById("username").value;
@@ -142,7 +206,6 @@ export function validateUser(){
     const phoneNumber = document.getElementById("phonenumber").value;
 
     let validated = true;
-
 
     if(!username || User.usernameExists(username)){
         document.getElementById("username").style.backgroundColor = errorColor;
@@ -236,21 +299,20 @@ loginUser.addEventListener("click", () => {
     }
 
     if(!user){
-        loginError.style.backgroundColor = "red";
         loginError.style.display = "block";
         loginError.textContent = Error.USER_NOT_FOUND.name;
+        return;
     }
     if(user.password != password){
-        loginError.style.backgroundColor = "red";
         loginError.textContent = Error.WRONG_PASSWORD.name;
         loginError.style.display = "block";
         document.getElementById("l-password").value = "";
+        return;
     }
-    loginError.style.backgroundColor = "green";
+    loginError.style.color = "green";
     loginError.textContent = "Successful login!";
     loginError.style.display = "block";
 
     document.getElementById("l-username").value = "";
     document.getElementById("l-password").value = "";
-
 });
